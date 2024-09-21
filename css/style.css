@@ -753,7 +753,7 @@ a:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #EF233C;
+    border-right: 1px solid #EF233C;
     background: #ffffff;
 }
 
@@ -1591,5 +1591,14 @@ a:focus {
         font-size: 16px;
         line-height: 16px;
         padding: 0 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .service-item h3 {
+        font-size: 18px; /* Réduire la taille du titre sur les petits écrans */
+    }
+    .service-item h6 {
+        font-size: 14px; /* Adapter la taille du sous-titre */
     }
 }
