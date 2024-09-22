@@ -146,7 +146,7 @@ async function sendMessage(userMessage = null) {
              method: 'POST',
              headers: {
                  'Content-Type': 'application/json',
-                 'Authorization': 'Bearer sk-2b4esjvI6hvI1rN7ZTe5UlKqc_X3ppYJGUv5RQZkXGT3BlbkFJ5hfMxWmXrCxQe3gDfodXfl_o-OM7ZoKVgvF8EoJ5oA' // Remplace par ta clé API
+                 'Authorization': 'Bearer sk-2b4esjvI6hvI1rN7ZTe5UlKqc_X3ppYJGUv5RQZkXGT3BlbkFJ5hfMxWmXrCxQe3gDfodXfl_o-OM7ZoKVgvF8EoJ5oA'
              },
              body: JSON.stringify({
                  model: "gpt-3.5-turbo",
