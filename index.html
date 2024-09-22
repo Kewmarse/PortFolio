@@ -6,9 +6,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Mon PorteFolio" name="keywords">
         <meta content="Mon PorteFolio" name="description">
-        
-        <!-- Favicon -->
-        <link href="img/favicon.ico" rel="icon">
+    
 
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -62,7 +60,7 @@
                                 <p>I'm</p>
                                 <h1>Joris Salmon</h1>
                                 <h2></h2>
-                                <div class="typed-text">Data Analyst, Business Analyst, Engineer BI, Data Scientist</div>
+                                <div class="typed-text">Data Analyst, Business Analyst, BI Engineer, Analytics Engineer</div>
                             </div>
                             <div class="hero-btn">
                                 <a class="btn" href="#isfooter">Contactez moi</a>
@@ -70,8 +68,8 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 d-none d-md-block">
-                        <div class="hero-image">
-                            <img src="img/dp.png" alt="">
+                        <div class="hero hero-image">
+                            <img src="img/contact.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -79,6 +77,23 @@
         </div>
         <!-- Hero End -->
 
+        <!-- Bulle de chat -->
+        <div class="chatbot-bubble" id="chatbotBubble">
+            💬
+        </div>
+
+        <!-- Fenêtre de chat -->
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-popup-header">Chat avec moi</div>
+            <div class="chat-popup-body" id="chatPopupBody">
+                <p>Posez-moi vos questions</p>
+            </div>
+            <div class="chat-popup-footer">
+                <input type="text" id="userMessage" placeholder="Écrivez votre message...">
+                <button onclick="sendMessage()">Envoyer</button>
+            </div>
+
+        </div>
 
         <!-- About Start -->
         <div class="about wow fadeInUp" data-wow-delay="0.1s" id="about">
@@ -92,7 +107,7 @@
                     <div class="col-lg-6">
                         <div class="about-content">
                             <div class="section-header text-left">
-                                <p>A propos de moi</p>
+                                <p>À propos de moi</p>
                                 <h2>Qui suis-je ?</h2>
                             </div>
                             <div class="about-text">
@@ -754,6 +769,7 @@
         <!-- Contact Javascript File -->
         <script src="mail/jqBootstrapValidation.min.js"></script>
         <script src="mail/contact.js"></script>
+        <script src="js/scripts.js"></script>
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>

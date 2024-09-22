@@ -248,7 +248,7 @@ a:focus {
     margin-bottom: 45px;
     padding: 120px 0 0 0;
     overflow: hidden;
-    background: linear-gradient(rgba(239, 35, 60, .95), rgba(239, 35, 60, .95)), url(../img/hero-bg.jpg);
+    background: linear-gradient(rgba(239, 35, 60, .95), rgba(239, 35, 60, .95)), url(../img/contact.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -265,8 +265,9 @@ a:focus {
 }
 
 .hero .hero-image img {
-    max-width: 80%;
-    max-height: 80%;
+    position: relative;
+    max-width: 20%;
+    max-height: 20%;
 }
 
 .hero .hero-content {
@@ -1469,7 +1470,7 @@ a:focus {
 .footer {
     position: relative;
     margin-top: 45px;
-    background: #EF233C;
+    background: #   ;
 }
 
 .footer .container-fluid {
@@ -1601,4 +1602,150 @@ a:focus {
     .service-item h6 {
         font-size: 14px; /* Adapter la taille du sous-titre */
     }
+}
+
+/* Style pour la bulle de chat */
+.chatbot-bubble {
+    position: fixed;
+    bottom: 80px;
+    right: 10px;
+    background-color: #EF233C;
+    color: white;
+    border-radius: 50%; /* Ronde */
+    width: 70px; /* Légèrement plus grand */
+    height: 70px; /* Légèrement plus grand */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre douce */
+}
+
+/* Fenêtre de chat */
+.chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 100px; /* Ajustez cette valeur pour qu'elle soit juste au-dessus de la bulle */
+    right: 60px;
+    border: 2px solid #EF233C;
+    z-index: 1000;
+    background-color: white;
+    width: 350px;
+    height: 500px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Entête de la fenêtre */
+.chat-popup-header {
+    background-color: #EF233C;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10px 10px 0 0;
+    position: relative; /* Assurez-vous que cela ne dépasse pas */
+    z-index: 1; /* Mettez-le au-dessus du corps du chat */
+}
+
+/* Corps de la fenêtre */
+.chat-popup-body {
+    padding: 15px; /* Plus d'espace */
+    height: calc(100% - 120px); /* Ajuste pour l'en-tête et le pied */
+    overflow-y: auto; /* Permet le défilement vertical */
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+    max-height: 400px; /* Hauteur maximale pour éviter l'agrandissement */
+}
+
+
+/* Champ d'entrée */
+.chat-popup-footer {
+    padding: 10px;
+    border-top: 1px solid #EF233C;
+    display: flex;
+    background-color: #f9f9f9; /* Fond léger */
+    border-radius: 0 0 15px 15px; /* Arrondi en bas */
+}
+
+/* Champ de saisie */
+.chat-popup-footer input {
+    flex-grow: 1;
+    padding: 10px; /* Plus d'espace */
+    border: 1px solid #EF233C;
+    border-radius: 20px; /* Arrondi */
+    outline: none; /* Retire la bordure au focus */
+    transition: border-color 0.3s; /* Animation de transition */
+}
+
+.chat-popup-footer input:focus {
+    border-color: #D32F2F; /* Changement de couleur au focus */
+}
+
+/* Bouton d'envoi */
+.chat-popup-footer button {
+    background-color: #EF233C;
+    color: white;
+    border: none;
+    padding: 10px 15px; /* Plus d'espace */
+    margin-left: 10px;
+    border-radius: 20px; /* Arrondi */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+.chat-popup-footer button:hover {
+    background-color: #D32F2F; /* Couleur plus sombre au survol */
+}
+
+/* Bulle de chat pour l'utilisateur */
+.bulle-utilisateur {
+    background-color: #EF233C; /* Couleur de fond */
+    color: white;
+    border-radius: 15px; /* Arrondi pour la bulle */
+    padding: 10px;
+    margin: 5px 0;
+    max-width: 80%; /* Largeur maximale */
+    word-wrap: break-word; /* Permet de couper les mots longs */
+    overflow-wrap: break-word; /* Assure que le texte long soit cassé */
+    align-self: flex-start; /* Aligner à gauche */
+}
+
+/* Bulle de chat pour Joris */
+.bulle-joris {
+    background-color: #f0f0f0; /* Couleur de fond */
+    color: black;
+    border-radius: 15px; /* Arrondi pour la bulle */
+    padding: 10px;
+    margin: 5px 0;
+    max-width: 80%; /* Largeur maximale */
+    word-wrap: break-word; /* Permet de couper les mots longs */
+    overflow-wrap: break-word; /* Assure que le texte long soit cassé */
+    align-self: flex-end; /* Aligner à droite */
+}
+
+/* Phrases préfabriquées */
+.preset-phrases {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px; /* Marge supérieure */
+    padding: 10px; /* Un peu d'espace autour */
+    background-color: #f9f9f9; /* Fond léger */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+/* Boutons de phrases préfabriquées */
+.preset-phrases button {
+    background-color: #EF233C;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    margin: 5px 0; /* Marge verticale */
+    border-radius: 20px; /* Arrondi */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Animation de transition */
+}
+.preset-phrases button:hover {
+    background-color: #D32F2F; /* Couleur plus sombre au survol */
 }
