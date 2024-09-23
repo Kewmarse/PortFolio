@@ -3,7 +3,7 @@ name: Run Scripts on Commit
 on:
   push:
     branches:
-      - main  # Change ceci si tu veux une autre branche
+      - main  # Exécuter l'action sur les commits vers la branche 'main'
 
 jobs:
   build:
@@ -16,11 +16,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Change la version si nécessaire
+          node-version: '14'  # Utiliser la version Node.js 14 (tu peux changer si nécessaire)
 
       - name: Install dependencies
-        run: npm install  # Installe les dépendances si tu en as
+        run: npm install  # Installe les dépendances (utilise ton `package.json` pour déterminer les packages)
 
       - name: Run scripts.js
+        run: node js/scripts.js  # Exécuter ton fichier `scripts.js`
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Transmettre la clé API depuis les secrets GitHub
