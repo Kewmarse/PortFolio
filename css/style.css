@@ -1595,14 +1595,31 @@ a:focus {
     }
 }
 
+/* Responsivité pour la fenêtre de chat */
 @media (max-width: 576px) {
-    .service-item h3 {
-        font-size: 18px; /* Réduire la taille du titre sur les petits écrans */
+    .chat-popup {
+        width: 90%; /* Utiliser 90% de la largeur sur petits écrans */
+        height: auto; /* Ajuster la hauteur automatiquement */
+        max-height: 80%; /* Hauteur maximale sur petits écrans */
     }
-    .service-item h6 {
-        font-size: 14px; /* Adapter la taille du sous-titre */
+
+    .chat-popup-header {
+        font-size: 16px; /* Ajuster la taille de la police de l'en-tête */
+    }
+
+    .chat-popup-body p {
+        font-size: 14px; /* Ajuster la taille de la police du texte */
+    }
+
+    .chat-popup-footer input {
+        font-size: 14px; /* Ajuster la taille de la police du champ d'entrée */
+    }
+
+    .chat-popup-footer button {
+        font-size: 14px; /* Ajuster la taille de la police du bouton */
     }
 }
+
 
 /* Style pour la bulle de chat */
 .chatbot-bubble {
@@ -1620,6 +1637,16 @@ a:focus {
     cursor: pointer;
     z-index: 1000;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    animation: bounceBubble 0.6s infinite alternate; /* Animation de saut */
+}
+
+@keyframes bounceBubble {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Hauteur du saut */
+    }
 }
 
 /* Fenêtre de chat */
@@ -1648,6 +1675,8 @@ a:focus {
     position: relative; /* Assurez-vous que cela ne dépasse pas */
     z-index: 1; /* Mettez-le au-dessus du corps du chat */
 }
+
+
 
 /* Corps de la fenêtre */
 .chat-popup-body {
@@ -1724,6 +1753,23 @@ a:focus {
     align-self: flex-end; /* Aligner à droite */
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Déplace légèrement le message vers le bas */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Position finale */
+    }
+}
+
+.bulle-utilisateur,
+.bulle-joris {
+    opacity: 0; /* Commencer par être invisible */
+    animation: fadeIn 0.5s forwards; /* Animation de fondu */
+}
+
 /* Phrases préfabriquées */
 .preset-phrases {
     display: flex;
@@ -1748,4 +1794,37 @@ a:focus {
 }
 .preset-phrases button:hover {
     background-color: #D32F2F; /* Couleur plus sombre au survol */
+}
+
+.loading {
+    display: flex; /* Utiliser flexbox pour centrer les points */
+    align-items: center; /* Centrer verticalement */
+    justify-content: center; /* Centrer horizontalement */
+    margin-top: 40px;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    border-radius: 50%; /* Rendre les points ronds */
+    background-color: #EF233C; /* Couleur des points */
+    animation: bounce 0.6s infinite alternate; /* Animation pour chaque point */
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s; /* Délai pour le deuxième point */
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s; /* Délai pour le troisième point */
 }

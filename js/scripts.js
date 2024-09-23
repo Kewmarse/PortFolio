@@ -23,7 +23,10 @@ document.getElementById("chatbotBubble").addEventListener("click", function() {
     popup.style.display = popup.style.display === "block" ? "none" : "block";
 
     if (popup.style.display === "block") {
+        this.style.animation = "none"; // Arrête l'animation
         showPresetPhrases();
+    } else {
+        this.style.animation = ""; // Réactive l'animation si la bulle est fermée
     }
 });
 
@@ -34,6 +37,8 @@ document.getElementById("userMessage").addEventListener("keypress", function(eve
         sendMessage(document.getElementById("userMessage").value); // Appeler la fonction d'envoi de message
     }
 });
+
+
 
 // Ajoutez les phrases préfabriquées
 const presetPhrases = [
@@ -91,6 +96,18 @@ async function sendMessage(userMessage = null) {
     }
 
     document.getElementById("userMessage").value = ""; // Effacer le champ
+
+    // Créer l'élément d'animation de chargement
+    var loading = document.createElement("div");
+    loading.className = "loading";
+    loading.innerHTML = `
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    `;
+    chatBody.appendChild(loading); // Ajouter l'animation au chat
+
+
 
     // Masquer les phrases préfabriquées après l'envoi du premier message
     const presetContainer = document.querySelector('.preset-phrases');
@@ -150,7 +167,7 @@ async function sendMessage(userMessage = null) {
      const messages = [{ role: "system", content: context }];
      conversationHistory.forEach(msg => messages.push(msg));
      messages.push({ role: "user", content: userMessage });
- 
+
 
      // Appel à l'API OpenAI pour obtenir une réponse
      try {
@@ -166,15 +183,30 @@ async function sendMessage(userMessage = null) {
         const data = await response.json();
         const messageBot = data.choices[0].message.content;
 
+        // Supprimer l'animation de chargement
+        chatBody.removeChild(loading);
+
+        // Ajouter le message de l'assistant avec effet de fondu
+        const assistantBubble = document.createElement('p');
+        assistantBubble.className = 'bulle-joris';
+        assistantBubble.innerHTML = `<strong></strong>`;
+        chatBody.appendChild(assistantBubble);
+        assistantBubble.classList.add('fade-in'); // Ajouter classe d'animation
+
+        // Assurez-vous de faire défiler vers le bas
         chatBody.scrollTop = chatBody.scrollHeight;
 
-        chatBody.innerHTML += `<p class="bulle-joris"></p>`;
-        typeWriterEffect(chatBody.lastChild, messageBot);
+        // Ajouter l'effet de typewriter
+        typeWriterEffect(assistantBubble, messageBot);
+
+        // Ajouter le message à l'historique
         conversationHistory.push({ role: "assistant", content: messageBot });
     } catch (error) {
         chatBody.innerHTML += "<p><strong>Erreur:</strong> Le chatbot a connu une erreur.</p>";
+        // Supprimer l'animation de chargement
+        chatBody.removeChild(loading);
     }
- }
+}
 
  
  // Fonction d'animation de type "mot par mot"
