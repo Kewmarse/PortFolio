@@ -1597,13 +1597,10 @@ a:focus {
 
 /* Responsivité pour la fenêtre de chat */
 @media (max-width: 576px) {
-    #chatPopup {
-        max-width: 90%; /* Limite la largeur du chat */
-        width: 350px; /* Largeur fixe pour les écrans plus petits */
-        bottom: 20px; /* Distance du bas de l'écran */
-        right: 20px; /* Distance de la droite de l'écran */
-        border-radius: 10px; /* Coins arrondis */
-        margin: 0 auto; /* Centre le chat horizontalement */
+    .chat-popup {
+        width: 90%; /* Utiliser 90% de la largeur sur petits écrans */
+        height: auto; /* Ajuster la hauteur automatiquement */
+        max-height: 80%; /* Hauteur maximale sur petits écrans */
     }
 
     .chat-popup-header {
@@ -1678,7 +1675,6 @@ a:focus {
     position: relative; /* Assurez-vous que cela ne dépasse pas */
     z-index: 1; /* Mettez-le au-dessus du corps du chat */
 }
-
 
 
 /* Corps de la fenêtre */
