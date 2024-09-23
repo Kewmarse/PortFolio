@@ -1600,9 +1600,10 @@ a:focus {
         max-width: 90%; /* Limite la largeur du chat */
         width: 90%; /* Largeur flexible pour les petits écrans */
         bottom: 20px; /* Distance du bas de l'écran */
-        right: 20px; /* Distance de la droite de l'écran */
+        left: 50%; /* Positionner le chat à 50% de la largeur de l'écran */
+        transform: translateX(-50%); /* Centrer horizontalement */
         border-radius: 10px; /* Coins arrondis */
-        margin: 0 auto; /* Centre le chat horizontalement */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Ajouter une ombre pour un effet visuel */
     }
 
     .chat-popup-header {
