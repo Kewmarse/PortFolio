@@ -3,16 +3,8 @@ import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
 
-  // Liste des domaines autorisés
-  const allowedOrigins = ['https://www.jorissalmon.com', 'https://porte-folio-kappa.vercel.app'];
-  const origin = req.headers.origin;
-
-  if (allowedOrigins.includes(origin)) {
-      res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-      res.setHeader('Access-Control-Allow-Origin', 'null'); // Si non autorisé, mettre null
-  } // Change '*' par ton domaine si tu veux restreindre
-
+  // Autoriser les requêtes CORS
+  res.setHeader('Access-Control-Allow-Origin', '*'); // Change '*' par ton domaine si tu veux restreindre
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
