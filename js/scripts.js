@@ -141,16 +141,12 @@ async function sendMessage(userMessage = null) {
 
      // Appel à l'API OpenAI pour obtenir une réponse
      try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch('jorissalmon/functions/callOpenAI', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` // Remplace par ta clé API
             },
-            body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: messages
-            })
+            body: JSON.stringify({ messages })
         });
         const data = await response.json();
         const messageBot = data.choices[0].message.content;
