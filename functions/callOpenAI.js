@@ -16,12 +16,6 @@ exports.handler = async (event) => {
             })
         });
 
-        if (!response.ok) {
-            const errorData = await response.text(); // Récupère le texte de l'erreur
-            console.error('Erreur API:', errorData);
-            throw new Error('Erreur de l\'API'); // Lance une nouvelle erreur
-        }
-
         const data = await response.json();
 
         return {
