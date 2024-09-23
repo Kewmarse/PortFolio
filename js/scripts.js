@@ -141,12 +141,17 @@ async function sendMessage(userMessage = null) {
 
      // Appel à l'API OpenAI pour obtenir une réponse
      try {
-        const response = await fetch('https://main--jorissalmon.netlify.app/.netlify/functions/callopenai', {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer 
+                sk-40TKTF6aUKQwvBh-uQKgh2jSUI4_BUB23XQqZAVMpkT3BlbkFJv_hVFk9vl01hz7DohloGihAgxzeHfKOyey51vykgUA` // Utiliser la clé API depuis les variables d'environnement
             },
-            body: JSON.stringify({ messages })
+            body: JSON.stringify({
+                model: "gpt-3.5-turbo",
+                messages: messages
+            })
         });
         const data = await response.json();
         const messageBot = data.choices[0].message.content;
