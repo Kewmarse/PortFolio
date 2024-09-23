@@ -139,8 +139,6 @@ async function sendMessage(userMessage = null) {
      messages.push({ role: "user", content: userMessage });
  
 
-     const fetch = require('node-fetch');
-     
      // Appel à l'API OpenAI pour obtenir une réponse
      try {
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
