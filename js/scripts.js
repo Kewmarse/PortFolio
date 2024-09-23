@@ -160,7 +160,7 @@ async function sendMessage(userMessage = null) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                messages: [{ role: "user", content: messages }]
+                messages: messages
             })
         });
         const data = await response.json();
