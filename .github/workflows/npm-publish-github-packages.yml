@@ -1,9 +1,9 @@
-name: Run Scripts on Commit
+name: Run OpenAI Script on Commit
 
 on:
   push:
     branches:
-      - main  # Exécuter l'action sur les commits vers la branche 'main'
+      - main
 
 jobs:
   build:
@@ -16,12 +16,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Utiliser la version Node.js 14 (tu peux changer si nécessaire)
+          node-version: '14'
 
       - name: Install dependencies
-        run: npm install  # Installe les dépendances (utilise ton `package.json` pour déterminer les packages)
+        run: npm install
 
-      - name: Run scripts.js
-        run: node js/scripts.js  # Exécuter ton fichier `scripts.js`
+      - name: Run API script
+        run: node js/callopenai.js  # Exécuter le script côté serveur
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Transmettre la clé API depuis les secrets GitHub
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
