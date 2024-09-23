@@ -1,0 +1,27 @@
+name: Run Scripts on Commit
+
+on:
+  push:
+    branches:
+      - main  # Change ceci si tu veux une autre branche
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Change la version si nécessaire
+
+      - name: Install dependencies
+        run: npm install  # Installe les dépendances si tu en as
+
+      - name: Run scripts.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: node js/scripts.js  # Exécute ton script
