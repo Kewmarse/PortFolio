@@ -1597,7 +1597,7 @@ a:focus {
 
 /@media (max-width: 576px) {
     #chatPopup {
-        max-width: 80%; /* Limite la largeur du chat */
+        max-width: 90%; /* Limite la largeur du chat */
         width: 90%; /* Largeur flexible pour les petits écrans */
         bottom: 20px; /* Distance du bas de l'écran */
         left: 50%; /* Positionner le chat à 50% de la largeur de l'écran */
