@@ -1595,10 +1595,11 @@ a:focus {
     }
 }
 
-/@media (max-width: 576px) {
+/* Responsivité pour la fenêtre de chat */
+@media (max-width: 576px) {
     #chatPopup {
         max-width: 90%; /* Limite la largeur du chat */
-        width: 90%; /* Largeur flexible pour les petits écrans */
+        width: 350px; /* Largeur fixe pour les écrans plus petits */
         bottom: 20px; /* Distance du bas de l'écran */
         right: 20px; /* Distance de la droite de l'écran */
         border-radius: 10px; /* Coins arrondis */
@@ -1607,25 +1608,21 @@ a:focus {
 
     .chat-popup-header {
         font-size: 16px; /* Ajuster la taille de la police de l'en-tête */
-        text-align: center; /* Centrer le texte de l'en-tête */
     }
 
     .chat-popup-body p {
         font-size: 14px; /* Ajuster la taille de la police du texte */
-        line-height: 1.5; /* Améliorer la lisibilité */
     }
 
     .chat-popup-footer input {
         font-size: 14px; /* Ajuster la taille de la police du champ d'entrée */
-        width: calc(100% - 20px); /* S'assurer que le champ s'ajuste bien */
-        padding: 10px; /* Ajouter du remplissage */
     }
 
     .chat-popup-footer button {
         font-size: 14px; /* Ajuster la taille de la police du bouton */
-        padding: 10px; /* Ajouter du remplissage pour le bouton */
     }
 }
+
 
 /* Style pour la bulle de chat */
 .chatbot-bubble {
