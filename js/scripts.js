@@ -2,13 +2,26 @@
 let conversationHistory = [];
 
 
+// Si document n'existe pas (Node.js), utiliser JSDOM pour simuler le DOM
+if (typeof document === 'undefined') {
+    const dom = new JSDOM(`
+        <!DOCTYPE html>
+        <body>
+            <div id="chatbotBubble"></div>
+            <div id="chatPopupBody"></div>
+            <input id="userMessage" />
+            <div id="chatPopup"></div>
+        </body>
+    `);
+    global.document = dom.window.document;
+    global.window = dom.window;
+}
 
 // Ouvrir/Fermer la fenêtre de chat
 document.getElementById("chatbotBubble").addEventListener("click", function() {
     const popup = document.getElementById("chatPopup");
     popup.style.display = popup.style.display === "block" ? "none" : "block";
 
-    // Afficher les phrases préfabriquées uniquement lorsque la fenêtre est ouverte
     if (popup.style.display === "block") {
         showPresetPhrases();
     }
