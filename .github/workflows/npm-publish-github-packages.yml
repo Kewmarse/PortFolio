@@ -1,2 +1,20 @@
-env:
-  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run your script
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          # Your command that uses the API key
+        run: node js/scripts.js  # Exécute ton script
