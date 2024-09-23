@@ -141,7 +141,7 @@ async function sendMessage(userMessage = null) {
 
      // Appel à l'API OpenAI pour obtenir une réponse
      try {
-        const response = await fetch('./jorissalmon/functions/callOpenAI', {
+        const response = await fetch('/.jorissalmon/functions/callopenai.js', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
