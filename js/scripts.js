@@ -141,7 +141,7 @@ async function sendMessage(userMessage = null) {
 
      // Appel à l'API OpenAI pour obtenir une réponse
      try {
-        const response = await fetch('https://main--jorissalmon.netlify.app/functions/callopenai', {
+        const response = await fetch('https://main--jorissalmon.netlify.app/.netlify/functions/callopenai', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
