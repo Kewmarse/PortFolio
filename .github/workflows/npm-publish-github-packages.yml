@@ -24,4 +24,3 @@ jobs:
       - name: Run scripts.js
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: node js/scripts.js  # Exécute ton script
