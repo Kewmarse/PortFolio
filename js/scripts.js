@@ -145,8 +145,7 @@ async function sendMessage(userMessage = null) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer 
-                sk-40TKTF6aUKQwvBh-uQKgh2jSUI4_BUB23XQqZAVMpkT3BlbkFJv_hVFk9vl01hz7DohloGihAgxzeHfKOyey51vykgUA` // Utiliser la clé API depuis les variables d'environnement
+                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` // Utiliser la clé API depuis les variables d'environnement
             },
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
