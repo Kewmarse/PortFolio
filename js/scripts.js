@@ -154,15 +154,13 @@ async function sendMessage(userMessage = null) {
 
      // Appel à l'API OpenAI pour obtenir une réponse
      try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch('https://porte-folio-eight.vercel.app/api/chatbot', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` // Utiliser la clé API depuis les variables d'environnement
             },
             body: JSON.stringify({
-                model: "gpt-3.5-turbo",
-                messages: messages
+                messages: [{ role: "user", content: messageToSend }]
             })
         });
         const data = await response.json();
