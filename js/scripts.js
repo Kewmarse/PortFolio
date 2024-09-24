@@ -44,7 +44,8 @@ document.getElementById("userMessage").addEventListener("keypress", function(eve
 const presetPhrases = [
     "Bonjour, qui es-tu ?",
     "Quelles sont tes compétences ?",
-    "Comment te contacter ?"
+    "Comment te contacter ?",
+    "Où te retrouver ?"
 ];
 
 // Fonction pour afficher les phrases préfabriquées
