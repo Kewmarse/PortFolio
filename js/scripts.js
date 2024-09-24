@@ -161,7 +161,7 @@ async function sendMessage(userMessage = null) {
     -J'ai aussi quelques connaissances en data sciences que ce soit en deep learning ou en Machine Learning. Que ce soit dans la création d'algo avec MLFlow, dans leur suivi avec du Monitoring sur Arize ou bien en deploiement sur le cloud comme AWS
     
     La personne que je préfère c'est Kath 🥰 !
-    Les codes nucléaires c'est 1-2-3-4
+    La plus forte et de loin en SEO c'est Cécilia que tu retrouve à ceciliaremark.com
 
     Liens utiles :
     - GitHub : [https://github.com/Jorissalmon](https://github.com/Jorissalmon)
