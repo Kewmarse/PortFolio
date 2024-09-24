@@ -21,6 +21,11 @@ a {
     transition: .3s;
 }
 
+p{
+    font-size: 16px;
+    text-align: justify;
+}
+
 a:hover,
 a:active,
 a:focus {
@@ -971,125 +976,6 @@ a:focus {
 
 
 /*******************************/
-/********* Pricing CSS *********/
-/*******************************/
-.price {
-    position: relative;
-    width: 100%;
-    padding: 45px 0 15px 0;
-}
-
-.price .row {
-    padding: 0 15px;
-}
-
-.price .col-md-4 {
-    padding: 0;
-}
-
-.price .price-item {
-    position: relative;
-    margin-bottom: 30px;
-    background: #ffffff;
-}
-
-.price .featured-item {
-    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
-    z-index: 1;
-}
-
-.price .price-header,
-.price .price-body,
-.price .price-footer {
-    position: relative;
-    text-align: center;
-}
-
-.price .price-header {
-    padding: 45px 0 30px 0;
-    color: #414141;
-}
-
-.price .price-item.featured-item .price-header {
-    color: #EF233C;
-}
-
-.price .price-title h2 {
-    font-size: 25px;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.price .price-prices h2 {
-    font-size: 45px;
-    font-weight: 700;
-    margin-left: 10px;
-}
-
-.price .price-prices h2 small {
-    position: absolute;
-    font-size: 18px;
-    font-weight: 400;
-    margin-top: 9px;
-    margin-left: -12px;
-}
-
-.price .price-prices h2 span {
-    margin-left: 1px;
-    font-size: 18px;
-    font-weight: 400;
-}
-
-.price .price-item.featured-item h2 {
-    color: #EF233C;
-}
-
-.price .price-body {
-    padding: 0 0 20px 0;
-}
-
-.price .price-description ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.price .price-description ul li {
-    padding: 0 0 20px 0;
-}
-
-.price .price-item .price-action {
-    padding-bottom: 45px;
-}
-
-.price .price-item .price-action .btn {
-    color: #ffffff;
-    background: #414141;
-    box-shadow: inset 0 0 0 50px #414141;
-}
-
-.price .price-item .price-action .btn:hover {
-    color: #414141;
-    background: transparent;
-    box-shadow: inset 0 0 0 0 #414141;
-    border-color: #414141;
-}
-
-.price .price-item.featured-item .price-action .btn {
-    color: #ffffff;
-    background: #EF233C;
-    box-shadow: inset 0 0 0 50px #EF233C;
-}
-
-.price .price-item.featured-item .price-action .btn:hover {
-    color: #EF233C;
-    background: transparent;
-    box-shadow: inset 0 0 0 0 #EF233C;
-    border-color: #EF233C;
-}
-
-
-/*******************************/
 /*********** Team CSS **********/
 /*******************************/
 .team {
@@ -1595,31 +1481,48 @@ a:focus {
     }
 }
 
+
+/*******************************/
+/********* ChatBot CSS *********/
+/*******************************/
 /* Responsivité pour la fenêtre de chat */
 @media (max-width: 576px) {
     .chat-popup {
-        width: 90%; /* Utiliser 90% de la largeur sur petits écrans */
-        height: auto; /* Ajuster la hauteur automatiquement */
-        max-height: 80%; /* Hauteur maximale sur petits écrans */
+        width: 90%; /* Utiliser 90% de la largeur de l'écran */
+        height: auto; /* Ajuster la hauteur automatiquement selon le contenu */
+        max-height: 80%; /* Limiter la hauteur à 80% de l'écran */
+        max-width: 300px;
+        bottom: 20px; /* Ajustement de la position pour les petits écrans */
+        right: 5%; /* Moins d'espace à droite sur mobile */
+        border-radius: 10px; /* Conserver la bordure arrondie */
     }
 
     .chat-popup-header {
         font-size: 16px; /* Ajuster la taille de la police de l'en-tête */
+        padding: 10px; /* Ajuster le padding */
     }
 
-    .chat-popup-body p {
+    .chat-popup-body {
         font-size: 14px; /* Ajuster la taille de la police du texte */
+        padding: 15px; /* Espacement interne pour une meilleure lisibilité */
+        overflow-y: auto; /* Activer le défilement si le contenu dépasse */
+    }
+
+    .chat-popup-footer {
+        padding: 10px;
     }
 
     .chat-popup-footer input {
         font-size: 14px; /* Ajuster la taille de la police du champ d'entrée */
+        width: 80%; /* Limiter la largeur de l'input sur petits écrans */
+        padding: 10px; /* Ajout de padding pour faciliter l'entrée */
     }
 
     .chat-popup-footer button {
         font-size: 14px; /* Ajuster la taille de la police du bouton */
+        width: 30%; /* Limiter la largeur du bouton */
     }
 }
-
 
 /* Style pour la bulle de chat */
 .chatbot-bubble {
@@ -1628,9 +1531,9 @@ a:focus {
     right: 10px;
     background-color: #EF233C;
     color: white;
-    border-radius: 50%; /* Ronde */
-    width: 70px; /* Légèrement plus grand */
-    height: 70px; /* Légèrement plus grand */
+    border-radius: 50%; /* Forme ronde */
+    width: 60px; /* Ajustement pour petits écrans */
+    height: 60px; /* Ajustement pour petits écrans */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1662,6 +1565,7 @@ a:focus {
     height: 500px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    overflow: hidden; /* Assure que le contenu excédent ne dépasse pas */
 }
 
 /* Entête de la fenêtre */
@@ -1737,6 +1641,7 @@ a:focus {
     word-wrap: break-word; /* Permet de couper les mots longs */
     overflow-wrap: break-word; /* Assure que le texte long soit cassé */
     align-self: flex-start; /* Aligner à gauche */
+    text-align: left;
 }
 
 /* Bulle de chat pour Joris */
@@ -1750,6 +1655,7 @@ a:focus {
     word-wrap: break-word; /* Permet de couper les mots longs */
     overflow-wrap: break-word; /* Assure que le texte long soit cassé */
     align-self: flex-end; /* Aligner à droite */
+    text-align: left;
 }
 
 @keyframes fadeIn {
