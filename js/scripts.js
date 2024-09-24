@@ -79,6 +79,18 @@ window.onload = function() {
     chatBody.innerHTML = ""; // Effacer le contenu du chat
 };
 
+// Fermer la fenêtre de chat si l'utilisateur clique en dehors
+document.addEventListener("click", function(event) {
+    const popup = document.getElementById("chatPopup");
+    const bubble = document.getElementById("chatbotBubble");
+    
+    // Vérifier si le clic est en dehors de la bulle de chat et de la fenêtre de chat
+    if (popup.style.display === "block" && !popup.contains(event.target) && !bubble.contains(event.target)) {
+        popup.style.display = "none"; // Fermer la fenêtre
+        bubble.style.animation = ""; // Réactive l'animation de la bulle
+    }
+});
+
 // Fonction d'envoi de message
 async function sendMessage(userMessage = null) {
     // Utiliser le message utilisateur passé ou obtenir le champ de saisie
