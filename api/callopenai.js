@@ -32,7 +32,8 @@ export default async function handler(req, res) {
             });
 
             if (!response.ok) {
-                throw new Error(`OpenAI API error: ${response.statusText}`);
+              const errorData = await response.json(); // Obtenez les détails de l'erreur
+              throw new Error(`OpenAI API error: ${response.status} - ${errorData.error.message}`);
             }
 
             const data = await response.json();
