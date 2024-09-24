@@ -59,7 +59,8 @@ function showPresetPhrases() {
     presetPhrases.forEach(phrase => {
         const button = document.createElement('button');
         button.innerText = phrase;
-        button.onclick = () => {
+        button.onclick = (event) => {
+            event.stopPropagation(); // Empêche la fermeture du chat
             sendMessage(phrase); // Envoie le message
             presetContainer.style.display = 'none'; // Masque les boutons après utilisation
         };
@@ -87,12 +88,7 @@ document.addEventListener("click", function(event) {
     const presetContainer = document.querySelector('.preset-phrases');
 
     // Vérifier si le clic est en dehors de la bulle de chat et de la fenêtre de chat
-    if (
-        popup.style.display === "block" &&
-        !popup.contains(event.target) &&
-        !bubble.contains(event.target) &&
-        !(presetContainer && presetContainer.contains(event.target)) // Vérifiez si le clic est dans les phrases préfabriquées
-    ) {
+    if (popup.style.display === "block" && !popup.contains(event.target) && !bubble.contains(event.target)) {
         popup.style.display = "none"; // Fermer la fenêtre
         bubble.style.animation = ""; // Réactive l'animation de la bulle
     }
