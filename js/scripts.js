@@ -84,9 +84,15 @@ window.onload = function() {
 document.addEventListener("click", function(event) {
     const popup = document.getElementById("chatPopup");
     const bubble = document.getElementById("chatbotBubble");
-    
+    const presetContainer = document.querySelector('.preset-phrases');
+
     // Vérifier si le clic est en dehors de la bulle de chat et de la fenêtre de chat
-    if (popup.style.display === "block" && !popup.contains(event.target) && !bubble.contains(event.target)) {
+    if (
+        popup.style.display === "block" &&
+        !popup.contains(event.target) &&
+        !bubble.contains(event.target) &&
+        !(presetContainer && presetContainer.contains(event.target)) // Vérifiez si le clic est dans les phrases préfabriquées
+    ) {
         popup.style.display = "none"; // Fermer la fenêtre
         bubble.style.animation = ""; // Réactive l'animation de la bulle
     }
