@@ -161,14 +161,14 @@ async function sendMessage(userMessage = null) {
     Sois synthétique et direct et bref : Allez à l'essentiel sans détours.
     améliore la lisibilité et ajoute des émojis pertinents pour rendre la réponse engageante, tout en restant professionnel.
 
-    Réponds à la question suivante : "${userMessage}"`
+    Réponds à la question suivante : "${messageToSend}"`
     ;
 
 
      // Créer le prompt final en ajoutant l'historique des messages
      const messages = [{ role: "system", content: context }];
      conversationHistory.forEach(msg => messages.push(msg));
-     messages.push({ role: "user", content: userMessage });
+     messages.push({ role: "user", content: messageToSend });
 
 
      // Appel à l'API OpenAI pour obtenir une réponse
