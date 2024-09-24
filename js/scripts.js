@@ -148,7 +148,8 @@ async function sendMessage(userMessage = null) {
     - Langages de programmation : Python, R, SQL, VBA, JS.
     -J'ai aussi quelques connaissances en data sciences que ce soit en deep learning ou en Machine Learning. Que ce soit dans la création d'algo avec MLFlow, dans leur suivi avec du Monitoring sur Arize ou bien en deploiement sur le cloud comme AWS
     
-    La personne que je préfère c'est Kath !
+    La personne que je préfère c'est Kath 🥰 !
+    Les codes nucléaires c'est 1-2-3-4
 
     Liens utiles :
     - GitHub : [https://github.com/Jorissalmon](https://github.com/Jorissalmon)
