@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         try {
             // Récupère les messages du corps de la requête
-            const { messages } = req.body; // Assurez-vous que 'messages' est dans le corps de la requête
+            const { messages } = req.body;
 
             const response = await fetch('https://api.openai.com/v1/chat/completions', {
                 method: 'POST',
