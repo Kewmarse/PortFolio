@@ -212,21 +212,39 @@ async function sendMessage(userMessage = null) {
         // Supprimer l'animation de chargement
         chatBody.removeChild(loading);
 
-        // Ajouter le message de l'assistant avec effet de fondu
-        const assistantBubble = document.createElement('p');
+        // Créer un nouvel élément div pour la bulle de message
+        const assistantBubble = document.createElement('div');
         assistantBubble.className = 'bulle-joris';
-        assistantBubble.innerHTML = `
-        <img src="../meta/favicon.ico" class="favicon-icon" alt="favicon">
-        `;
 
-        chatBody.appendChild(assistantBubble);
-        assistantBubble.classList.add('fade-in'); // Ajouter classe d'animation
+        // Créer un conteneur flex pour l'image et le texte
+        const bubbleContent = document.createElement('div');
+        bubbleContent.className = 'bubble-content'; // Classe pour le conteneur flex
+
+        // Ajouter l'image à gauche
+        const faviconElement = document.createElement('img');
+        faviconElement.src = "./meta/favicon.ico"; // Chemin vers ton image
+        faviconElement.className = "favicon-icon"; // Classe pour le style de l'image
+        faviconElement.alt = "favicon"; // Texte alternatif pour l'image
+
+        // Créer un nouvel élément pour le message texte
+        const messageElement = document.createElement('p'); // Créer un élément <p> pour le texte
+        messageElement.innerHTML = messageBot; // Remplir le message texte ici
+        bubbleContent.appendChild(messageElement); // Ajouter le message au conteneur
+
+        // Ajouter l'image et le contenu dans une div flex
+        const contentWrapper = document.createElement('div');
+        contentWrapper.className = 'content-wrapper'; // Conteneur pour l'image et le texte
+        contentWrapper.appendChild(faviconElement); // Ajouter l'image
+        contentWrapper.appendChild(bubbleContent); // Ajouter le texte
+
+        assistantBubble.appendChild(contentWrapper); // Ajouter le wrapper à la bulle
+        chatBody.appendChild(assistantBubble); // Ajouter la bulle au chat
 
         // Assurez-vous de faire défiler vers le bas
         chatBody.scrollTop = chatBody.scrollHeight;
 
         // Ajouter l'effet de typewriter
-        typeWriterEffect(assistantBubble, messageBot);
+        typeWriterEffect(bubbleContent, messageBot);
 
         // Ajouter le message à l'historique
         conversationHistory.push({ role: "assistant", content: messageBot });
@@ -265,5 +283,5 @@ function typeWriterEffect(element, text) {
         } else {
             clearInterval(typingEffect); // Arrêter l'animation quand c'est fini
         }
-    }, 10); // Vitesse d'animation, en millisecondes
+    }, 5); // Vitesse d'animation, en millisecondes
 }

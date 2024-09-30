@@ -1646,16 +1646,18 @@ a:focus {
 
 /* Bulle de chat pour Joris */
 .bulle-joris {
+    display: flex;             /* Utiliser flexbox pour aligner les éléments */
+    margin: 10px;             /* Marge autour de la bulle */
+    padding: 10px;            /* Rembourrage à l'intérieur de la bulle */
+    border-radius: 15px;      /* Arrondir les coins de la bulle */
     background-color: #f0f0f0; /* Couleur de fond */
-    color: black;
-    border-radius: 15px; /* Arrondi pour la bulle */
-    padding: 10px;
-    margin: 5px 0;
-    max-width: 80%; /* Largeur maximale */
-    word-wrap: break-word; /* Permet de couper les mots longs */
+    color: black;             /* Couleur du texte */
+    max-width: 95%;           /* Largeur maximale de la bulle */
+    word-wrap: break-word;    /* Permet de couper les mots longs */
     overflow-wrap: break-word; /* Assure que le texte long soit cassé */
-    align-self: flex-end; /* Aligner à droite */
-    text-align: left;
+    align-self: flex-end;     /* Aligner la bulle à droite */
+    text-align: left;         /* Alignement du texte à gauche */
+    overflow-y: auto;
 }
 
 @keyframes fadeIn {
@@ -1741,10 +1743,23 @@ a:focus {
     text-decoration: underline;
 }
 
-/* Style pour la favicon à côté des messages de Joris */
+.content-wrapper {
+    display: flex;             /* Utiliser flexbox pour aligner l'image et le texte */
+    align-items: flex-start;   /* Aligner l'image et le texte en haut, pas centré */
+}
+
+.bubble-content {
+    margin-left: 10px;  
+    max-width: calc(100% - 30px);  /* Limite la largeur pour éviter le débordement */
+    word-wrap: break-word;  /* Permet au texte de se couper à la fin de la bulle */
+    overflow-wrap: break-word; /* Assure que le texte long soit cassé */
+    /* Retirer overflow-y pour éviter le défilement */
+    /* overflow-y: auto; Commenté pour éviter le défilement */
+}
+
 .favicon-icon {
-    width: 16px;  /* Largeur de l'icône */
-    height: 16px; /* Hauteur de l'icône */
-    margin-right: 8px; /* Espace entre l'icône et le texte */
-    vertical-align: middle; /* Aligner l'icône avec le texte */
+    width: 20px;              /* Largeur de l'image */
+    height: 20px;             /* Hauteur de l'image */
+    border-radius: 50%;       /* Faire l'image ronde */
+    object-fit: cover;        /* S'assurer que l'image remplit le conteneur sans déformation */
 }
