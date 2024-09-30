@@ -1491,7 +1491,7 @@ a:focus {
         width: 90%; /* Utiliser 90% de la largeur de l'écran */
         height: auto; /* Ajuster la hauteur automatiquement selon le contenu */
         max-height: 80%; /* Limiter la hauteur à 80% de l'écran */
-        max-width: 300px;
+        max-width: 350px;
         bottom: 20px; /* Ajustement de la position pour les petits écrans */
         right: 5%; /* Moins d'espace à droite sur mobile */
         border-radius: 10px; /* Conserver la bordure arrondie */
@@ -1561,7 +1561,7 @@ a:focus {
     border: 2px solid #EF233C;
     z-index: 1000;
     background-color: white;
-    width: 350px;
+    width: 380px;
     height: 500px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
