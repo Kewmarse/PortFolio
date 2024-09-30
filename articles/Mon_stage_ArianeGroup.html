@@ -61,19 +61,93 @@
     </div>
     <!-- Hero End -->
      
+    <!-- Bulle de chat -->
+    <div class="chatbot-bubble" id="chatbotBubble">💬</div>
+
+    <!-- Fenêtre de chat -->
+    <div class="chat-popup" id="chatPopup">
+        <div class="chat-popup-header">Chat avec moi</div>
+        <div class="chat-popup-body" id="chatPopupBody">
+            <p>Posez-moi vos questions</p>
+        </div>
+        <div class="chat-popup-footer">
+            <input type="text" id="userMessage" placeholder="Écrivez votre message...">
+            <button onclick="sendMessage()">Envoyer</button>
+        </div>
+    </div>
+    <!-- Bulle de chat End -->
+
     <!-- Article Start -->
     <div class="article" id="article">
         <div class="container">
             <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                <h2>Article en Cours de Création</h2>
-                <p>Cette page est actuellement en cours de développement. Restez à l'écoute pour plus d'informations !</p>
+                <h2><strong>Mon Voyage au Coeur d'ArianeGroup</strong></h2>
+                <p><em>Une expérience transformative au sein d'un leader mondial de la technologie spatiale.</em></p>
             </div>
-            <div class="article-content text-center">
-                <p>Merci de votre patience.</p>
+            <div class="article-content">
+
+                <div class="row mb-5 d-flex align-items-center">
+                    <div class="col-md-6 text-left">
+                        <h3><strong>Un Cadre atypique</strong></h3>
+                        <p>
+                            En tant qu’ingénieur BI stagiaire dans le service Business Intelligence (BI) d'ArianeGroup,
+                            j'ai plongé dans le monde fascinant de la technologie spatiale. 
+                            Cette entreprise, fruit d'une collaboration entre <strong>Airbus</strong> et <strong>Safran</strong>, est à la pointe de l'innovation,
+                            contribuant au développement de la fusée <strong>Ariane 6</strong>. 
+                            Dès mon arrivée, j'ai ressenti l'importance de notre mission : fournir des solutions de transport spatial de haute performance.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <img src="./images/logo_arianegroup.png" alt="ArianeGroup" class="img-fluid" style="max-width: 50%; height: auto;">
+                    </div>
+                </div>
+
+                <div class="row mb-5 d-flex align-items-center">
+                    <div class="col-md-6 text-center">
+                        <img src="./images/rapport_arianegroup.png" alt="Business Intelligence" class="img-fluid" style="max-width: 90%; height: auto;">
+                    </div>
+                    <div class="col-md-6 text-left">
+                        <h3><strong>Une plongée dans le monde des données</strong></h3>
+                        <p>
+                            Mon rôle a commencé par la réalisation de reportings avec l'outil <strong>Cognos d'IBM</strong>. 
+                            Ce fut un défi stimulant d’explorer l'architecture complexe des données de l'entreprise. 
+                            En étudiant les commandes d'achats et en centralisant les informations issues de l'ERP, j'ai contribué à créer des reportings utiles pour les chefs de service, 
+                            leur permettant d'éviter des pénalités de paiement dues à des erreurs de suivi.
+                        </p>
+                        <p>
+                            J'ai également créé un portail <strong>Service Desk</strong> pour gérer les tickets du service, ce qui m'a permis de mieux comprendre l'importance de la communication et de la collaboration entre les différents services.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-md-6 text-left">
+                        <h3><strong>Une Réflexion sur mon parcours</strong></h3>
+                        <p>
+                            Cette expérience m’a permis d’acquérir des compétences techniques tout en réfléchissant à mes aspirations professionnelles. 
+                            Travailler dans un service BI m'a révélé l'importance d'adapter les solutions aux besoins des utilisateurs. 
+                            J'ai pris conscience que la <strong>visualisation des données</strong> et l'interaction avec les équipes sont cruciales pour réussir dans ce domaine. 
+                            Mon ambition de devenir consultant en <strong>stratégie data</strong> s'est renforcée, avec l'idée d'accompagner des entreprises dans l'optimisation de leur utilisation des données.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-left">
+                        <h3><strong>Un Bilan <span style="color: red;">Positif</span></strong></h3>
+                        <p>
+                            En somme, mon stage chez ArianeGroup a été une aventure enrichissante. 
+                            J'ai eu la chance de travailler dans un environnement stimulant, avec des collègues passionnés, 
+                            et de contribuer à des projets significatifs. J'en ressors avec des compétences techniques accrues et une vision plus claire de mes objectifs professionnels.
+                            Cette expérience m'a ouvert les yeux sur les défis et les opportunités du monde de la data, 
+                            dans le secteur aérospatial et au-delà, et je suis plus déterminé que jamais à poursuivre ma carrière dans ce domaine.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
     <!-- Article End -->
+
+
 
     <!-- Footer Start -->
     <div class="contact" id="contact">
@@ -114,8 +188,9 @@
         <script src="../lib/lightbox/js/lightbox.min.js"></script>
         
         <!-- Contact Javascript File -->
-        <script src="../mail/jqBootstrapValidation.min.js"></script>
-        <script src="../mail/contact.js"></script>
+        <script src="mail/jqBootstrapValidation.min.js"></script>
+        <script src="mail/contact.js"></script>
+        <script src="../js/scripts.js"></script>
 
         <!-- Template Javascript -->
         <script src="../js/main.js"></script>
