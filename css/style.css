@@ -1733,3 +1733,18 @@ a:focus {
 .dot:nth-child(3) {
     animation-delay: 0.4s; /* Délai pour le troisième point */
 }
+
+/* liens cliquables */
+.styled-link {
+    font-weight: bold;
+    color: #EF233C;
+    text-decoration: underline;
+}
+
+/* Style pour la favicon à côté des messages de Joris */
+.favicon-icon {
+    width: 16px;  /* Largeur de l'icône */
+    height: 16px; /* Hauteur de l'icône */
+    margin-right: 8px; /* Espace entre l'icône et le texte */
+    vertical-align: middle; /* Aligner l'icône avec le texte */
+}

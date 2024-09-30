@@ -199,21 +199,26 @@ async function sendMessage(userMessage = null) {
             })
         });
         const data = await response.json();
-        const messageBot = data.choices[0].message.content;
+        let messageBot = data.choices[0].message.content;
 
+        // Pour les liens cliquables
         messageBot = messageBot
-            .replace('https://github.com/Jorissalmon', '<a href="https://github.com/Jorissalmon" target="_blank">GitHub</a>')
-            .replace('https://www.linkedin.com/in/joris-salmon/', '<a href="https://www.linkedin.com/in/joris-salmon/" target="_blank">LinkedIn</a>')
-            .replace('https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing', '<a href="https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing" target="_blank">CV</a>');
-
-
+        .replace('https://github.com/Jorissalmon', '<a href="https://github.com/Jorissalmon" target="_blank" class="styled-link">GitHub</a>')
+        .replace('https://www.linkedin.com/in/joris-salmon/', '<a href="https://www.linkedin.com/in/joris-salmon/" target="_blank" class="styled-link">LinkedIn</a>')
+        .replace('https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing', '<a href="https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing" target="_blank" class="styled-link">CV</a>')
+        .replace('joris.salmon53290@gmail.com', '<a href="mailto:joris.salmon53290@gmail.com" class="styled-link">joris.salmon53290@gmail.com</a>')
+        .replace('0766840946', '<a href="tel:+33766840946" class="styled-link">0766840946</a>');
+        
         // Supprimer l'animation de chargement
         chatBody.removeChild(loading);
 
         // Ajouter le message de l'assistant avec effet de fondu
         const assistantBubble = document.createElement('p');
         assistantBubble.className = 'bulle-joris';
-        assistantBubble.innerHTML = `<strong></strong>`;
+        assistantBubble.innerHTML = `
+        <img src="../meta/favicon.ico" class="favicon-icon" alt="favicon">
+        `;
+
         chatBody.appendChild(assistantBubble);
         assistantBubble.classList.add('fade-in'); // Ajouter classe d'animation
 
@@ -233,17 +238,32 @@ async function sendMessage(userMessage = null) {
 }
 
  
- // Fonction d'animation de type "mot par mot"
- function typeWriterEffect(element, text) {
+// Fonction d'animation de type "mot par mot" qui respecte le HTML
+function typeWriterEffect(element, text) {
     let index = 0;
-    const words = text.split(' ');
-    const typingEffect = setInterval(() => { 
-        if (index < words.length) {
-            element.innerHTML += words[index] + ' ';
+    let currentText = ''; // Stocker le texte actuellement affiché
+    let isInTag = false;  // Indique si on est à l'intérieur d'une balise HTML
+    const typingEffect = setInterval(() => {
+        if (index < text.length) {
+            // Vérifier si on est à l'intérieur d'une balise HTML
+            if (text[index] === '<') {
+                isInTag = true;
+            }
+            if (isInTag) {
+                currentText += text[index]; // Accumuler les caractères d'une balise
+                if (text[index] === '>') {
+                    isInTag = false; // Fin de la balise
+                }
+            } else {
+                currentText += text[index]; // Ajouter un caractère normal
+            }
+
+            // Ajouter tout le texte au fur et à mesure (balises + contenu)
+            element.innerHTML = currentText;
             index++;
             element.scrollTop = element.scrollHeight; // Scroll jusqu'en bas
         } else {
-            clearInterval(typingEffect); // Arrêter l'animation
+            clearInterval(typingEffect); // Arrêter l'animation quand c'est fini
         }
-    }, 50); // Vitesse d'animation, en millisecondes
+    }, 10); // Vitesse d'animation, en millisecondes
 }
