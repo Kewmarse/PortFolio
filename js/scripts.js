@@ -143,23 +143,23 @@ async function sendMessage(userMessage = null) {
     
     Formations :
     - Master Data Analytics (Toulon)
-    - DU Data Analytics (Sorbonne)
+    - DU Data Analytics (Sorbonne, Paris 1)
     - Licence 3 Mathématiques et Informatique (Rennes)
     - DUT Statistique Informatique Décisionnelle (Vannes)
     
     Expériences :
-    1. ArianeGroup : Ingénieur BI, rédaction de cahiers des charges.
-    2. Crédit Agricole : Data Manager, automatisation des données.
-    3. Météo-France : Data Analyst, analyse des impacts climatiques.
-    4. Les Sables d'Olonne : Data Analyst, suivi des indicateurs.
+    1. ArianeGroup : Ingénieur BI, j'ai élaboré des rapport BI Cognos, je définissai le besoin avec le client. J'ai élaboré des rapports permettant le pilotage des couts du service. De plus, j'ai travaillé avec la suite Atlassian pour le suivi et la gestion des tickets Atlassian.
+    2. Crédit Agricole : Data Manager, j'ai aidé à la migration des données sur une base de données via un processus automatisé sur la suite Microsoft notamment via Access. Mon travail a permit d'automatiser la migration et de la faire plus rapidement
+    3. Météo-France : Data Analyst, J'ai travaillé sur le sujet de recherche, le réchauffement climatique a t-il un impact sur les phénomènes de fortes précipitations en Bretagne. J'ai analysé les données de 1959 à nos jours, avec des méthodes et tests statistiques avancés. Finalement j'ai trouvé des résultats sensiblement significatif mais qui méritait de plus amples recherches
+    4. Les Sables d'Olonne : Data Analyst, construction d'un algorithme qui récupère les données multi sources, qui va les traitzer et les stocker. Après cela, il va générer sur demande un rapport statistique sur le territoire. Cela est utili notamment pour suivre les performances du service public.
     
     Mon ambition :
     Aider les entreprises à devenir data-driven et à prendre des décisions éclairées. J'aimerais pouvoir aider à la construction de stratégie dans l'utilisation de la data, que ce soit sur le choix de la stack ou le plan d'application. Mes compétences premières sont dans l'analyse data, mais je m'intéresse aussi aux autres domaines tels que la data science ou le data engineering. J'aimerais donc devenir consultant dans ce domaine et prendre de l'expérience.
     
     Mes compétences clés :
-    - Data Engineering : Maîtrise de SGBD comme MySQL, MongoDB, Azure et outils Cloud (AWS).
-    - Data Analyste : Je sais faire des ETL (Talend) et faire de l'ingestion de données pour alimenter les DWH. Je sais ensuite les requeter en SQL pour les visualiser
-    - Data Visualization : Création de rapports interactifs avec Power BI, Tableau, et Cognos. Egalement j'ai de l'expérience avec l'interface streamlit,flask.
+    - Data Engineering : Maîtrise de SGBD comme MySQL, MongoDB, et outils Cloud (AWS, Azure).
+    - Data Analyste : Je sais faire des ETL (Talend) et faire de l'ingestion de données pour alimenter les DWH. Je sais ensuite les requeter en SQL pour les visualiser ensuite sur des outils de data visualization
+    - Data Visualization : Création de rapports interactifs avec Power BI, Tableau, et Cognos Analytics. Egalement j'ai de l'expérience avec l'interface streamlit,flask.
     - Langages de programmation : Python, R, SQL, VBA, JS.
     -J'ai aussi quelques connaissances en data sciences que ce soit en deep learning ou en Machine Learning. Que ce soit dans la création d'algo avec MLFlow, dans leur suivi avec du Monitoring sur Arize ou bien en deploiement sur le cloud comme AWS
     
@@ -167,10 +167,10 @@ async function sendMessage(userMessage = null) {
     La plus forte et de loin en SEO c'est Cécilia que tu retrouve à ceciliaremark.com
 
     Liens utiles :
-    - GitHub : [https://github.com/Jorissalmon](https://github.com/Jorissalmon)
-    - LinkedIn : [https://www.linkedin.com/in/joris-salmon/](https://www.linkedin.com/in/joris-salmon/)
-    - CV : [https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing](https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing)
-    
+    - GitHub : https://github.com/Jorissalmon
+    - LinkedIn : https://www.linkedin.com/in/joris-salmon/
+    - CV : https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing
+
     On peut me contacter par mail à joris.salmon53290@gmail.com ou par téléphone au 0766840946
 
     Instructions de Mise en Forme
@@ -200,6 +200,12 @@ async function sendMessage(userMessage = null) {
         });
         const data = await response.json();
         const messageBot = data.choices[0].message.content;
+
+        messageBot = messageBot
+            .replace('https://github.com/Jorissalmon', '<a href="https://github.com/Jorissalmon" target="_blank">GitHub</a>')
+            .replace('https://www.linkedin.com/in/joris-salmon/', '<a href="https://www.linkedin.com/in/joris-salmon/" target="_blank">LinkedIn</a>')
+            .replace('https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing', '<a href="https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing" target="_blank">CV</a>');
+
 
         // Supprimer l'animation de chargement
         chatBody.removeChild(loading);
