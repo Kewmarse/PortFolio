@@ -37,11 +37,11 @@
                     <div class="navbar-nav ml-auto">
                         <a href="#home" class="nav-item nav-link active">Accueil</a>
                         <a href="#about" class="nav-item nav-link">Qui suis-je ?</a>
+                        <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
+                        <a href="#blog" class="nav-item nav-link">Blog</a>
                         <a href="#service" class="nav-item nav-link">Formations</a>
                         <a href="#experience" class="nav-item nav-link">Experiences</a>
-                        <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
                         <a href="#team" class="nav-item nav-link">Personnalité</a>
-                        <a href="#blog" class="nav-item nav-link">Blog</a>
                         <a href="#isfooter" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
@@ -146,7 +146,129 @@
             </div>
         </div>
         <!-- About End -->
+
+        <!-- Banner Start -->
+        <div class="banner wow zoomIn" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Découvrons <span>ensemble</span></h2>
+                </div>
+            </div>
+        </div>
+        <!-- Banner End -->
         
+        <!-- Portfolio Start -->
+        <div class="portfolio" id="portfolio">
+            <div class="container">
+                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                    <p>Mon Portfolio</p>
+                    <h2>Mes Projets</h2>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul id="portfolio-filter">
+                            <li data-filter="*" class="filter-active">All</li>
+                            <li data-filter=".filter-1">Interfaces</li>
+                            <li data-filter=".filter-2">Business Intelligence</li>
+                            <li data-filter=".filter-3">Data Science</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row portfolio-container">
+                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
+                        <div class="portfolio-wrap">
+                            <div class="portfolio-img">
+                                <img src="img/accor.png" alt="Projet ML">
+                            </div>
+                            <div class="portfolio-text">
+                                <h3>MLops Banque</h3>
+                                <a class="btn" href="https://github.com/Jorissalmon/DU_Ml_Ops"  target="_blank">+</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="portfolio-wrap">
+                            <div class="portfolio-img">
+                                <img src="img/tableau.png" alt="Image Dataviz">
+                            </div>
+                            <div class="portfolio-text">
+                                <h3>Mon profile Tableau Public</h3>
+                                <a class="btn" href="https://public.tableau.com/app/profile/joris.salmon/vizzes" target="_blank">+</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio End -->
+
+
+        <!-- Blog Start -->
+        <div class="blog" id="blog">
+            <div class="container">
+                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                    <p>Blog</p>
+                    <h2>Derniers Articles</h2>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <ul id="blog-filter">
+                            <li data-filter="*" class="filter-active">All</li>
+                            <li data-filter=".filter-data">Data</li>
+                            <li data-filter=".filter-bi">Business Intelligence</li>
+                            <li data-filter=".filter-career">Carrière</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row blog">
+                    <div class="col-lg-6 blog-item filter-career wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="blog-img">
+                            <img src="img/arianeGroup_logo_texte.jpg" alt="Blog">
+                        </div>
+                        <div class="blog-text">
+                            <h2>Stage - ArianeGroup</h2>
+                            <div class="blog-meta">
+                                <p><i class="far fa-user"></i>Admin</p>
+                            </div>
+                            <p>
+                                Je vous raconte mon expérience au sein d'ArianeGroup
+                            </p>
+                            <a class="btn" href="articles/Mon_stage_ArianeGroup.html">Lire la suite <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 blog-item filter-data wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="blog-img">
+                            <img src="img/machine_learning.jpg" alt="Blog">
+                        </div>
+                        <div class="blog-text">
+                            <h2>Le Machine Learning</h2>
+                            <div class="blog-meta">
+                                <p><i class="far fa-user"></i>Admin</p>
+                            </div>
+                            <p>
+                                Ce que j'ai appris sur le Machine Learning
+                            </p>
+                            <a class="btn" href="articles/Machine_Learning.html">Lire la suite <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog End -->
+
+
+        <!-- Banner Start -->
+        <div class="banner wow zoomIn" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="section-header text-center">
+                    <!-- p>Awesome Discount</p-->
+                    <h2>Faisons connaissance</h2>
+                </div>
+                
+                </div>
+            </div>
+        </div>
+        <!-- Banner End -->        
         
         <!-- Service Start -->
         <div class="service" id="service">
@@ -228,10 +350,6 @@
         </div>
         <!-- Service End -->
 
-
-
-        
-        
         <!-- Experience Start -->
         <div class="experience" id="experience">
             <div class="container">
@@ -295,80 +413,6 @@
             </div>
         </div>
         <!-- Job Experience End -->
-
-
-        
-        
-        <!-- Banner Start -->
-        <div class="banner wow zoomIn" data-wow-delay="0.1s">
-            <div class="container">
-                <div class="section-header text-center">
-                    <h2>Découvrons <span>ensemble</span></h2>
-                </div>
-            </div>
-        </div>
-        <!-- Banner End -->
-
-
-        <!-- Portfolio Start -->
-        <div class="portfolio" id="portfolio">
-            <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>Mon Portfolio</p>
-                    <h2>Mes Projets</h2>
-                </div>
-                <div class="row">
-                    <div class="col-12">
-                        <ul id="portfolio-filter">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-1">Interfaces</li>
-                            <li data-filter=".filter-2">Business Intelligence</li>
-                            <li data-filter=".filter-3">Data Science</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row portfolio-container">
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/accor.png" alt="Projet ML">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>MLops Banque</h3>
-                                <a class="btn" href="https://github.com/Jorissalmon/DU_Ml_Ops"  target="_blank">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/tableau.png" alt="Image Dataviz">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>Mon profile Tableau Public</h3>
-                                <a class="btn" href="https://public.tableau.com/app/profile/joris.salmon/vizzes" target="_blank">+</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Portfolio End -->
-        <div></div>
-        
-        <!-- Banner Start -->
-        <div class="banner wow zoomIn" data-wow-delay="0.1s">
-            <div class="container">
-                <div class="section-header text-center">
-                    <!-- p>Awesome Discount</p-->
-                    <h2>Faisons connaissance</h2>
-                </div>
-                
-                </div>
-            </div>
-        </div>
-        <!-- Banner End -->
-
 
         <!-- Team Start -->
         <div class="team" id="team">
@@ -441,56 +485,6 @@
             </div>
         </div>
         <!-- Team End -->
-        
-
-        <!-- Blog Start -->
-        <div class="blog" id="blog">
-            <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
-                    <p>Du Blog</p>
-                    <h2>Derniers Articles</h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="blog-item wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="blog-img">
-                                <img src="img/arianeGroup_logo_texte.jpg" alt="Blog">
-                            </div>
-                            <div class="blog-text">
-                                <h2>Stage - ArianeGroup</h2>
-                                <div class="blog-meta">
-                                    <p><i class="far fa-user"></i>Admin</p>
-                                </div>
-                                <p>
-                                    Je vous raconte mon expérience au sein d'ArianeGroup
-                                </p>
-                                <a class="btn" href="articles/Mon_stage_ArianeGroup.html">Lire la suite <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="blog-item wow fadeInUp" data-wow-delay="0.3s">
-                            <div class="blog-img">
-                                <img src="img/machine_learning.jpg" alt="Blog">
-                            </div>
-                            <div class="blog-text">
-                                <h2>Le Machine Learning</h2>
-                                <div class="blog-meta">
-                                    <p><i class="far fa-user"></i>Admin</p>
-                                </div>
-                                <p>
-                                    Ce que j'ai apprit sur le Machine Learning
-                                </p>
-                                <a class="btn" href="articles/Machine_Learning.html">Lire la suite <i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Blog End -->
-
-
 
         <!-- Footer Start -->
         <div class="contact" id="contact">
