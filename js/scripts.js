@@ -45,7 +45,7 @@ const presetPhrases = [
     "Bonjour, qui es-tu ?",
     "Quelles sont tes compétences ?",
     "Comment te contacter ?",
-    "Où te retrouver ?"
+    "Ton CV, Github, ou LinkedIn ?"
 ];
 
 // Fonction pour afficher les phrases préfabriquées
@@ -167,6 +167,7 @@ async function sendMessage(userMessage = null) {
     La plus forte et de loin en SEO c'est Cécilia que tu retrouve à ceciliaremark.com
 
     Liens utiles :
+    Je veux que tu mettes seulement le lien dans le message, et que tu donnes le github, le linkedin et le cv
     - GitHub : https://github.com/Jorissalmon
     - LinkedIn : https://www.linkedin.com/in/joris-salmon/
     - CV : https://drive.google.com/file/d/1NeNoU_QvoOKOkPdssN59cdVko7NGEH0M/view?usp=sharing
@@ -220,11 +221,11 @@ async function sendMessage(userMessage = null) {
         const bubbleContent = document.createElement('div');
         bubbleContent.className = 'bubble-content'; // Classe pour le conteneur flex
 
-        // Ajouter l'image à gauche
-        const faviconElement = document.createElement('img');
-        faviconElement.src = "./meta/favicon.ico"; // Chemin vers ton image
-        faviconElement.className = "favicon-icon"; // Classe pour le style de l'image
-        faviconElement.alt = "favicon"; // Texte alternatif pour l'image
+        const faviconElement = document.createElement('link'); // Création d'un élément <link>
+        faviconElement.rel = 'icon';  // Type d'élément (favicon)
+        faviconElement.href = '/meta/favicon.ico';  // Chemin relatif à la racine
+        faviconElement.type = 'image/x-icon';  // Type MIME de l'icône
+        document.head.appendChild(faviconElement);  // Ajout à la balise <head>
 
         // Créer un nouvel élément pour le message texte
         const messageElement = document.createElement('p'); // Créer un élément <p> pour le texte
