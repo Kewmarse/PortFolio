@@ -2,6 +2,9 @@
 import fetch from 'node-fetch';
 
 export default async function handler(req, res) {
+         res.setHeader('Access-Control-Allow-Origin', '*'); // You can restrict this by specifying a domain
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+        res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Add headers as needed
 
     if (req.method === 'OPTIONS') {
         // Pour les requêtes préflight
