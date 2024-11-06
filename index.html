@@ -5,7 +5,7 @@
         <title>Joris Salmon Portfolio</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="portfolio, Joris Salmon, data Analyst, data science" name="keywords">
-        <meta content="Retrouvez ici mes projets data ainsi que mes articles sur ce sujet" name="description">
+        <meta content="Portfolio de Joris Salmon : expertise en data et analyse. Projets innovants en science des données" name="description">
 
         <!-- Favicon -->
         <link rel="icon" href="./meta/favicon.ico" type="image/x-icon">
@@ -82,9 +82,9 @@
 
         <!-- Fenêtre de chat -->
         <div class="chat-popup" id="chatPopup">
-            <div class="chat-popup-header">Chat avec moi</div>
+            <div class="chat-popup-header">Poses moi tes questions</div>
             <div class="chat-popup-body" id="chatPopupBody">
-                <p>Posez-moi vos questions</p>
+                <p>Ecris ton message ici</p>
             </div>
             <div class="chat-popup-footer">
                 <input type="text" id="userMessage" placeholder="Écrivez votre message...">
@@ -115,25 +115,25 @@
                             </div>
                             <div class="skills">
                                 <div class="skill-name">
-                                    <p>Python</p><p>90%</p>
+                                    <p>Python</p><p>100%</p>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <div class="skill-name">
-                                    <p>SQL</p><p>85%</p>
+                                    <p>SQL</p><p>100%</p>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <div class="skill-name">
-                                    <p>Power BI</p><p>85%</p>
+                                    <p>Power BI</p><p>100%</p>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                                 <div class="skill-name">
-                                    <p>Consulting</p><p>80%</p>
+                                    <p>Expérience</p><p>80%</p>
                                 </div>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
@@ -174,32 +174,11 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row portfolio-container">
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-1 wow fadeInUp" data-wow-delay="0.0s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/accor.png" alt="Projet ML">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>MLops Banque</h3>
-                                <a class="btn" href="https://github.com/Jorissalmon/DU_Ml_Ops"  target="_blank">+</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 portfolio-item filter-2 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="portfolio-wrap">
-                            <div class="portfolio-img">
-                                <img src="img/tableau.png" alt="Image Dataviz">
-                            </div>
-                            <div class="portfolio-text">
-                                <h3>Mon profile Tableau Public</h3>
-                                <a class="btn" href="https://public.tableau.com/app/profile/joris.salmon/vizzes" target="_blank">+</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row portfolio-container" id="projectsContainer">
+                     <!-- Les projets seront insérés ici par JavaScript -->
                 </div>
             </div>
-        </div>
+        </div>        
         <!-- Portfolio End -->
 
 
@@ -220,38 +199,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row blog">
-                    <div class="col-lg-6 blog-item filter-career wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="blog-img">
-                            <img src="img/arianeGroup_logo_texte.jpg" alt="Blog">
-                        </div>
-                        <div class="blog-text">
-                            <h2>Stage - ArianeGroup</h2>
-                            <div class="blog-meta">
-                                <p><i class="far fa-user"></i>Admin</p>
-                            </div>
-                            <p>
-                                Je vous raconte mon expérience au sein d'ArianeGroup
-                            </p>
-                            <a class="btn" href="articles/Mon_stage_ArianeGroup.html">Lire la suite <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 blog-item filter-data wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="blog-img">
-                            <img src="img/machine_learning.jpg" alt="Blog">
-                        </div>
-                        <div class="blog-text">
-                            <h2>Le Machine Learning</h2>
-                            <div class="blog-meta">
-                                <p><i class="far fa-user"></i>Admin</p>
-                            </div>
-                            <p>
-                                Ce que j'ai appris sur le Machine Learning
-                            </p>
-                            <a class="btn" href="articles/Machine_Learning.html">Lire la suite <i class="fa fa-angle-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <div class="row blog" id="blogjorisContainer">
+                    <!-- Les projets seront insérés ici par JavaScript -->
+               </div>
             </div>
         </div>
         <!-- Blog End -->
@@ -544,7 +494,8 @@
         <!-- Contact Javascript File -->
         <script src="mail/jqBootstrapValidation.min.js"></script>
         <script src="mail/contact.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="js/chatbot.js"></script>
+        <script src="js/supabase.js"></script>
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>

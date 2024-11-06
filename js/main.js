@@ -91,33 +91,5 @@
         }
     });
     
-    
-    
-    // Portfolio filter
-    var portfolioIsotope = $('.portfolio-container').isotope({
-        itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
-    });
-
-    $('#portfolio-filter li').on('click', function () {
-        $("#portfolio-filter li").removeClass('filter-active');
-        $(this).addClass('filter-active');
-        portfolioIsotope.isotope({filter: $(this).data('filter')});
-    });
-    
-    var blogIsotope = $('.blog .row').isotope({
-        itemSelector: '.blog-item',
-        layoutMode: 'fitRows'
-    });
-
-    // Gestion des clics sur les filtres du blog
-    $('#blog-filter li').on('click', function () {
-        $("#blog-filter li").removeClass('filter-active');
-        $(this).addClass('filter-active');
-        
-        // Filtrer les éléments
-        blogIsotope.isotope({ filter: $(this).data('filter') });
-    });
-    
 })(jQuery);
 
