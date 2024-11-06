@@ -8,7 +8,7 @@ import re
 
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app,origins=["*"]) 
 
 # Récupérer les variables d'environnement
 SUPABASE_URL = os.getenv("SUPABASE_URL")
