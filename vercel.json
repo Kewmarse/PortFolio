@@ -3,10 +3,7 @@
 
   "functions": {
     "api/index.py": {
-      "runtime": "@vercel/python",
-      "memory": 1024,
-      "maxDuration": 30,
-      "includeFiles": "path/to/dependencies/**"
+      "runtime": "@vercel/python"
     }
   },
 
@@ -17,59 +14,6 @@
       "dest": "api/index.py"
     }
   ],
-
-
-  "cleanUrls": true,
-
-
-  "images": {
-    "sizes": [256, 640, 1080, 2048, 3840],
-    "remotePatterns": [
-      {
-        "protocol": "https",
-        "hostname": "example.com",
-        "port": "",
-        "pathname": "/path/to/images/**"
-      }
-    ],
-    "minimumCacheTTL": 60,
-    "formats": ["image/webp", "image/avif"]
-  },
-
-
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
-    }
-  ],
-
-
-  "redirects": [
-    {
-      "source": "/old-path",
-      "destination": "/new-path",
-      "permanent": true
-    }
-  ],
-
-
-  "regions": ["sfo1", "iad1"],
-  "functionFailoverRegions": ["fra1"],
-
 
   "installCommand": "pip install -r requirements.txt",
   "devCommand": "vercel dev"
