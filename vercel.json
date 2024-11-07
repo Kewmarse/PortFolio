@@ -3,7 +3,7 @@
 
   "functions": {
     "api/index.py": {
-      "runtime": "@vercel/python"
+      "runtime": "now-php@1.0.0"
     }
   },
 
