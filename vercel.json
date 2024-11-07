@@ -1,7 +1,13 @@
 {
-  "functions": {
-    "api/*.py": {
-      "runtime": "vercel-python@3.12"
+  "build": [{
+    "src:" : "api/index.py",
+    "use": "@vercel/python",
+    "config" : {"maxLambdaSize": "15mb"}
+  }],
+  "routes" : [
+    {
+      "src" : "/(.*)",
+      "dest" : "api/index.py"
     }
-  }
+  ]
 }
