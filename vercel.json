@@ -2,8 +2,8 @@
   "buildCommand": "npm run build",
 
   "functions": {
-    "api/index.py": {
-      "runtime": "now-php@1.0.0"
+    "api/projects.py": {
+      "runtime": "@vercel/python"
     }
   },
 
@@ -11,7 +11,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "api/index.py"
+      "dest": "api/projects.py"
     }
   ],
 
