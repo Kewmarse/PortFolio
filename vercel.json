@@ -1,13 +1,78 @@
 {
-  "build": [{
-    "src:" : "api/index.py",
-    "use": "@vercel/python",
-    "config" : {"maxLambdaSize": "15mb"}
-  }],
-  "routes" : [
-    {
-      "src" : "/(.*)",
-      "dest" : "api/index.py"
+  // Commande de build pour spécifier le processus de compilation de l'application
+  "buildCommand": "npm run build",
+
+  // Configuration de la fonction serverless Python
+  "functions": {
+    "api/index.py": {
+      "runtime": "@vercel/python",
+      "memory": 1024, // Définit la mémoire de la fonction en Mo
+      "maxDuration": 30, // Temps d'exécution maximum en secondes
+      "includeFiles": "path/to/dependencies/**" // Inclure des fichiers supplémentaires nécessaires
     }
-  ]
+  },
+
+  // Configuration des routes et de la redirection de toutes les requêtes vers la fonction Python
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "api/index.py"
+    }
+  ],
+
+  // Suppression des extensions dans les URLs
+  "cleanUrls": true,
+
+  // Configuration des images pour optimiser les images dynamiquement
+  "images": {
+    "sizes": [256, 640, 1080, 2048, 3840],
+    "remotePatterns": [
+      {
+        "protocol": "https",
+        "hostname": "example.com",
+        "port": "",
+        "pathname": "/path/to/images/**"
+      }
+    ],
+    "minimumCacheTTL": 60,
+    "formats": ["image/webp", "image/avif"]
+  },
+
+  // Paramètres de sécurité des en-têtes pour protéger le site
+  "headers": [
+    {
+      "source": "/(.*)", // Appliquer à toutes les requêtes
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+
+  // Redirections pour certaines routes
+  "redirects": [
+    {
+      "source": "/old-path",
+      "destination": "/new-path",
+      "permanent": true
+    }
+  ],
+
+  // Régions de déploiement et failover pour haute disponibilité
+  "regions": ["sfo1", "iad1"],
+  "functionFailoverRegions": ["fra1"],
+
+  // Paramètres supplémentaires pour la commande d'installation et de dev local
+  "installCommand": "pip install -r requirements.txt",
+  "devCommand": "vercel dev"
 }
