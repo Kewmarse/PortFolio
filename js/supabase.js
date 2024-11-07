@@ -1,6 +1,12 @@
 async function loadProjects() {
     try {
-        const response = await fetch("https://porte-folio-kappa.vercel.app/api/projects"); // Appelle l'API Flask pour récupérer les projets
+        const response = await fetch("https://porte-folio-kappa.vercel.app/api/projects",{ // Appelle l'API Flask pour récupérer les projets
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'no-cors'
+        });
         const projects = await response.json();
 
         const projectsContainer = document.getElementById("projectsContainer");
@@ -53,7 +59,13 @@ async function loadProjects() {
 
 async function loadArticles() {
     try {
-        const response = await fetch("https://porte-folio-kappa.vercel.app/api/articles");
+        const response = await fetch("https://porte-folio-kappa.vercel.app/api/articles",{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'no-cors'
+        });
 
         if (!response.ok) {
             throw new Error(`Erreur HTTP : ${response.status}`);
@@ -110,7 +122,13 @@ async function loadArticles() {
 
 // Fonction pour vérifier et générer les fichiers HTML des articles
 async function checkAndGenerateArticles() {
-    const articlesResponse = await fetch('https://porte-folio-kappa.vercel.app/api/articles');
+    const articlesResponse = await fetch('https://porte-folio-kappa.vercel.app/api/articles',{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        mode: 'no-cors'
+    });
     const articles = await articlesResponse.json();
     
     for (const article of articles) {
@@ -120,7 +138,13 @@ async function checkAndGenerateArticles() {
     
 
         // Vérifie si le fichier HTML de l'article existe
-        const checkResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/check_article_html/${articleId}`);
+        const checkResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/check_article_html/${articleId}`,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'no-cors'
+        });
         const checkData = await checkResponse.json(); // Parse le JSON de la réponse
 
         // Vérifie si "exists" est false
@@ -128,7 +152,13 @@ async function checkAndGenerateArticles() {
             console.log(`Le fichier HTML n'existe pas pour l'article: ${article.title}, génération en cours...`);
             
             // Génère le fichier HTML de l'article
-            const generateResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/generate_html/${articleId}`, { method: 'GET' });
+            const generateResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/generate_html/${articleId}`,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                mode: 'no-cors'
+            });
             
             if (!generateResponse.ok) {
                 throw new Error(`Erreur lors de la génération de l'article HTML: ${generateResponse.statusText}`);
