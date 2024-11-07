@@ -1,18 +1,16 @@
 {
-  // Commande de build pour spécifier le processus de compilation de l'application
   "buildCommand": "npm run build",
 
-  // Configuration de la fonction serverless Python
   "functions": {
     "api/index.py": {
       "runtime": "@vercel/python",
-      "memory": 1024, // Définit la mémoire de la fonction en Mo
-      "maxDuration": 30, // Temps d'exécution maximum en secondes
-      "includeFiles": "path/to/dependencies/**" // Inclure des fichiers supplémentaires nécessaires
+      "memory": 1024,
+      "maxDuration": 30,
+      "includeFiles": "path/to/dependencies/**"
     }
   },
 
-  // Configuration des routes et de la redirection de toutes les requêtes vers la fonction Python
+
   "routes": [
     {
       "src": "/(.*)",
@@ -20,10 +18,10 @@
     }
   ],
 
-  // Suppression des extensions dans les URLs
+
   "cleanUrls": true,
 
-  // Configuration des images pour optimiser les images dynamiquement
+
   "images": {
     "sizes": [256, 640, 1080, 2048, 3840],
     "remotePatterns": [
@@ -38,10 +36,10 @@
     "formats": ["image/webp", "image/avif"]
   },
 
-  // Paramètres de sécurité des en-têtes pour protéger le site
+
   "headers": [
     {
-      "source": "/(.*)", // Appliquer à toutes les requêtes
+      "source": "/(.*)",
       "headers": [
         {
           "key": "X-Content-Type-Options",
@@ -59,7 +57,7 @@
     }
   ],
 
-  // Redirections pour certaines routes
+
   "redirects": [
     {
       "source": "/old-path",
@@ -68,11 +66,11 @@
     }
   ],
 
-  // Régions de déploiement et failover pour haute disponibilité
+
   "regions": ["sfo1", "iad1"],
   "functionFailoverRegions": ["fra1"],
 
-  // Paramètres supplémentaires pour la commande d'installation et de dev local
+
   "installCommand": "pip install -r requirements.txt",
   "devCommand": "vercel dev"
 }
