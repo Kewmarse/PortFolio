@@ -2,3 +2,4 @@ flask
 requests
 flask-cors
 supabase
+sanic==23.3.0
