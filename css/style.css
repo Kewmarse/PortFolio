@@ -142,7 +142,6 @@ a:focus {
     position: relative;
     transition: .5s;
     z-index: 999;
-    margin-bottom: 150px;
 }
 
 .navbar.nav-sticky {
@@ -1656,11 +1655,10 @@ a{
 .footer {
     position: relative;
     margin-top: 45px;
-    background: #   ;
 }
 
 .footer .container-fluid {
-    padding: 60px 0 0 0;
+    padding: 60px 2px 0 2px;
 }
 
 .footer .footer-info {
@@ -1687,14 +1685,15 @@ a{
     width: 100%;
     display: flex;
     justify-content: center;
+    margin: auto;
 }
 
 .footer .footer-menu p {
     color: #ffffff;
-    font-size: 22px;
+    font-size: 10px;
     font-weight: 600;
     line-height: 20px;
-    padding: 0 15px;
+    padding: 0 15px 0 15px;
     border-right: 1px solid #ffffff;
 }
 
@@ -1788,12 +1787,12 @@ a{
 /* Responsivité pour la fenêtre de chat */
 @media (max-width: 576px) {
     .chat-popup {
-        width: 90%; /* Utiliser 90% de la largeur de l'écran */
+        width: auto; /* Utiliser 90% de la largeur de l'écran */
         height: auto; /* Ajuster la hauteur automatiquement selon le contenu */
-        max-height: 80%; /* Limiter la hauteur à 80% de l'écran */
-        max-width: 350px;
+        max-height: auto; /* Limiter la hauteur à 80% de l'écran */
         bottom: 20px; /* Ajustement de la position pour les petits écrans */
-        right: 5%; /* Moins d'espace à droite sur mobile */
+        /* right: 2%; Moins d'espace à droite sur mobile */
+        margin: auto;
         border-radius: 10px; /* Conserver la bordure arrondie */
     }
 
@@ -1857,12 +1856,14 @@ a{
     display: none;
     position: fixed;
     bottom: 100px; /* Ajustez cette valeur pour qu'elle soit juste au-dessus de la bulle */
-    right: 60px;
+    right: 40px;
+    margin: auto;
+    margin-left: 10px;
     border: 2px solid #EF233C;
     z-index: 1000;
     background-color: white;
-    width: 380px;
-    height: 500px;
+    width: auto;
+    height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden; /* Assure que le contenu excédent ne dépasse pas */

@@ -1,10 +1,127 @@
-<!DOCTYPE html>
+import express from 'express';
+import cors from 'cors';
+import axios from 'axios';
+import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
+import path from 'path';
+import fs from 'fs';
+
+dotenv.config();
+
+const app = express();
+app.use(cors());
+
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_KEY = process.env.SUPABASE_KEY;
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+export default async function handler(req, res) {
+    // Vérification du CORS (si nécessaire)
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
+    
+    if (req.method === 'GET') {
+        try {
+            const articleId = req.query.article_id; // Récupère l'article ID dans les paramètres de la requête
+
+            if (!articleId) {
+                return res.status(400).json({ error: "L'ID de l'article est requis en tant que paramètre de requête." });
+            }
+
+            // Récupération de l'article
+            const { data: articleData, error: articleError } = await supabase
+                .from('articles')
+                .select('*')
+                .eq('id', articleId)
+                .single();
+    
+            if (articleError) throw articleError;
+            if (!articleData) return res.status(404).json({ error: "Article not found" });
+    
+            // Récupération des paragraphes associés
+            const { data: paragraphsData } = await supabase
+                .from('paragraphs')
+                .select('*')
+                .eq('article_id', articleId)
+                .order('position');
+    
+            // Récupération des informations de l'auteur
+            const { data: authorData } = await supabase
+                .from('autheur')
+                .select('*')
+                .eq('id', articleData.author_fk)
+                .single();
+    
+            // Récupération des articles associés
+            const { data: relatedArticlesData } = await supabase
+                .from('articles')
+                .select('*')
+                .neq('id', articleId) // Exclure l'article principal
+                .limit(2); // Limite de 2 articles associés, ajustable selon vos besoins
+    
+            // Formatage de la date de mise à jour
+            const updatedAt = new Date(articleData.updated_at).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    
+            // Génération du contenu HTML de l'article
+            let articleContent = `
+                <div class="article">
+                    <h1 class='article-title'>${articleData.title}</h1>
+                    <div class="article-meta">
+                        <div class="author-info">
+                            <img src="${authorData.author_image}" alt="Photo de l'auteur" class="author-photo">
+                            <div class="author-details">
+                                <p class='article-author'><strong>Par ${authorData.author}</strong></p>
+                                <p class='publication-date'>· ${articleData.reading_time} min de lecture · ${updatedAt}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+    
+            paragraphsData.forEach(paragraph => {
+                // Ajout de l'image si elle est présente
+                if (paragraph.image_url) {
+                    articleContent += `
+                    <figure class='article-figure'>
+                        <img src="${paragraph.image_url}" alt="" class="article-image" loading="lazy">
+                        <figcaption class='article-caption'>${paragraph.caption || ''}</figcaption>
+                    </figure>`;
+                }
+                // Ajout de la source si elle est présente
+                if (paragraph.source) {
+                    articleContent += `<p class='article-source'><em><a href='${paragraph.source}'>${paragraph.source}</a></em></p>`;
+                }
+                // Ajout du titre de paragraphe
+                if (paragraph.Titre_paragraphe) {
+                    articleContent += `<h2 class='paragraph-title'>${paragraph.Titre_paragraphe}</h2>`;
+                }
+                // Ajout du contenu du paragraphe
+                articleContent += `<p class='article-paragraph'>${paragraph.content}</p><br>`;
+            });
+    
+                    // Génération des liens HTML pour les articles associés
+            let relatedArticlesHtml = "";
+            if (relatedArticlesData.length > 0) {
+                relatedArticlesHtml = `<div class="fixed-related-articles"><h4>Vous pourriez aussi lire...</h4><ul>`;
+                relatedArticlesData.forEach(relatedArticle => {
+                    relatedArticlesHtml += `<li><a href='./${relatedArticle.id}.html' class='related-article'>${relatedArticle.title}</a></li>`;
+                });
+                relatedArticlesHtml += `</ul></div>`;
+            }
+                
+            // Modèle HTML complet avec la structure Medium
+           const htmlContent = `<!DOCTYPE html>
                 <html lang="fr">
                 <head>
                     <meta charset="utf-8">
                     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-                    <meta content=""Stage - ArianeGroup}" name="keywords">
-                    <meta content=""Expérience de stage au sein d'ArianeGroup" name="description">
+                    <meta content=""${articleData.title}}" name="keywords">
+                    <meta content=""${articleData.meta_description}" name="description">
                 
                     <!-- Favicon -->
                     <link rel="icon" href="../meta/favicon.ico" type="image/x-icon">
@@ -24,7 +141,7 @@
                 </head>
                     
                     
-                    <title>"Stage - ArianeGroup</title>
+                    <title>"${articleData.title}</title>
                 </head>
                 
                 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -58,47 +175,11 @@
                     <!-- Article Start -->
                     <div class="container article" id="article">
                         <div class="text-center wow zoomIn" data-wow-delay="0.1s">
-                            
-                <div class="article">
-                    <h1 class='article-title'>Stage - ArianeGroup</h1>
-                    <div class="article-meta">
-                        <div class="author-info">
-                            <img src="../img/me.jpeg" alt="Photo de l'auteur" class="author-photo">
-                            <div class="author-details">
-                                <p class='article-author'><strong>Par Joris</strong></p>
-                                <p class='publication-date'>· 3 mn min de lecture · 3 novembre 2024</p>
-                            </div>
-                        </div>
-                    </div>
-                </div><p class='article-paragraph'>En tant qu’ingénieur BI stagiaire dans le service Business Intelligence (BI) d'ArianeGroup,
-j'ai plongé dans le monde fascinant de la technologie spatiale. 
-Cette entreprise, fruit d'une collaboration entre <strong>Airbus</strong> et <strong>Safran</strong>, est à la pointe de l'innovation,
-contribuant au développement de la fusée <strong>Ariane 6</strong>. 
-Dès mon arrivée, j'ai ressenti l'importance de notre mission : fournir des solutions de transport spatial de haute performance.</p><br>
-                    <figure class='article-figure'>
-                        <img src="./images/rapport_arianegroup.png" alt="" class="article-image" loading="lazy">
-                        <figcaption class='article-caption'></figcaption>
-                    </figure><p class='article-source'><em><a href='Structure d'un rapport Cognos'>Structure d'un rapport Cognos</a></em></p><p class='article-paragraph'>Mon rôle a commencé par la réalisation de reportings avec l'outil <strong>Cognos d'IBM</strong>. 
-Ce fut un défi stimulant d’explorer l'architecture complexe des données de l'entreprise. 
-En étudiant les commandes d'achats et en centralisant les informations issues de l'ERP, j'ai contribué à créer des reportings utiles pour les chefs de service, 
-leur permettant d'éviter des pénalités de paiement dues à des erreurs de suivi.
-
-J'ai également créé un portail <strong>Service Desk</strong> pour gérer les tickets du service, ce qui m'a permis de mieux comprendre l'importance de la communication et de la collaboration entre les différents services.</p><br>
-                    <figure class='article-figure'>
-                        <img src="./images/logo_arianegroup.png" alt="" class="article-image" loading="lazy">
-                        <figcaption class='article-caption'></figcaption>
-                    </figure><p class='article-source'><em><a href='Logo d'ArianeGroup'>Logo d'ArianeGroup</a></em></p><p class='article-paragraph'>Cette expérience m’a permis d’acquérir des compétences techniques tout en réfléchissant à mes aspirations professionnelles. 
-Travailler dans un service BI m'a révélé l'importance d'adapter les solutions aux besoins des utilisateurs. 
-J'ai pris conscience que la <strong>visualisation des données</strong> et l'interaction avec les équipes sont cruciales pour réussir dans ce domaine. 
-Mon ambition de devenir consultant en <strong>stratégie data</strong> s'est renforcée, avec l'idée d'accompagner des entreprises dans l'optimisation de leur utilisation des données.</p><br><p class='article-paragraph'>En somme, mon stage chez ArianeGroup a été une aventure enrichissante. 
-J'ai eu la chance de travailler dans un environnement stimulant, avec des collègues passionnés, 
-et de contribuer à des projets significatifs. J'en ressors avec des compétences techniques accrues et une vision plus claire de mes objectifs professionnels.
-Cette expérience m'a ouvert les yeux sur les défis et les opportunités du monde de la data, 
-dans le secteur aérospatial et au-delà, et je suis plus déterminé que jamais à poursuivre ma carrière dans ce domaine.</p><br>
+                            ${articleContent}
                         </div>
                     </div>
                 
-                    <div class="fixed-related-articles"><h4>Vous pourriez aussi lire...</h4><ul><li><a href='./2.html' class='related-article'>Comment créer son PortFolio en DATA ?!</a></li><li><a href='./3.html' class='related-article'>L’Open Data : vecteur d'innovation sociale et territoriale</a></li></ul></div>
+                    ${relatedArticlesHtml}
                 
                     <!-- Article End -->
                 
@@ -149,4 +230,17 @@ dans le secteur aérospatial et au-delà, et je suis plus déterminé que jamais
                     <!-- Template Javascript -->
                     <script src="../js/main.js"></script>
                 </body>
-                </html>
+                </html>`;
+    
+            // Enregistrement du fichier HTML
+            const filePath = path.join(process.cwd(), 'articles', `${articleId}.html`);
+            if (!fs.existsSync(path.dirname(filePath))) {
+                fs.mkdirSync(path.dirname(filePath), { recursive: true });
+            }
+            fs.writeFileSync(filePath, htmlContent, 'utf8');
+    
+            res.json({ message: "HTML generated successfully", file_path: filePath });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    }};

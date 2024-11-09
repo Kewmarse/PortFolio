@@ -1,6 +1,6 @@
 async function loadProjects() {
     try {
-        const response = await fetch("https://porte-folio-kappa.vercel.app/api/projects",{ // Appelle l'API Flask pour récupérer les projets
+        const response = await fetch("https://porte-folio-kappa.vercel.app/api/projects",{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -138,15 +138,28 @@ async function checkAndGenerateArticles() {
     
 
         // Vérifie si le fichier HTML de l'article existe
-        const checkResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/check_article_html/${articleId}`,{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            mode: 'no-cors'
-        });
-        const checkData = await checkResponse.json(); // Parse le JSON de la réponse
-
+        try {
+            // Vérifie si le fichier HTML de l'article existe
+            const checkResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/check_article_html?article_id=${articleId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                mode: 'cors' // Utilise "cors" pour autoriser le traitement de la réponse
+            });
+    
+            // Parse la réponse JSON
+            if (!checkResponse.ok) {
+                throw new Error(`Erreur HTTP: ${checkResponse.status}`);
+            }
+    
+            const checkData = await checkResponse.json(); // Parse le JSON de la réponse
+    
+            console.log(`Article ${articleId} existe: `, checkData.exists); // Vérifie si l'article existe ou non
+        } catch (error) {
+            console.error('Erreur lors de la vérification de l\'article:', error.message);
+        }
+        
         // Vérifie si "exists" est false
         if (!checkData.exists) {
             console.log(`Le fichier HTML n'existe pas pour l'article: ${article.title}, génération en cours...`);
