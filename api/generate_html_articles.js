@@ -97,8 +97,8 @@ export default async function handler(req, res) {
                     articleContent += `<p class='article-source'><em><a href='${paragraph.source}'>${paragraph.source}</a></em></p>`;
                 }
                 // Ajout du titre de paragraphe
-                if (paragraph.Titre_paragraphe) {
-                    articleContent += `<h2 class='paragraph-title'>${paragraph.Titre_paragraphe}</h2>`;
+                if (paragraph.titre_paragraphe) {
+                    articleContent += `<h2 class='paragraph-title'>${paragraph.titre_paragraphe}</h2>`;
                 }
                 // Ajout du contenu du paragraphe
                 articleContent += `<p class='article-paragraph'>${paragraph.content}</p><br>`;
@@ -230,7 +230,7 @@ export default async function handler(req, res) {
                     <!-- Template Javascript -->
                     <script src="../js/main.js"></script>
                 </body>
-                </html>`;
+                </html>`;  
     
             // Enregistrement du fichier HTML
             const filePath = path.join(process.cwd(), 'articles', `${articleId}.html`);
