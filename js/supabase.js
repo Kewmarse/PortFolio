@@ -132,9 +132,10 @@ async function checkAndGenerateArticles() {
         const articleId = article.id;
         const articleTitle = article.title.replace(/[^a-z0-9]/gi, '_');
         const articleHtmlPath = `articles/${articleTitle}.html`;
-    
 
-        // Vérifie si le fichier HTML de l'article existe
+
+        let checkData = {}; // Déclaration de checkData en dehors du try-catch
+
         try {
             // Vérifie si le fichier HTML de l'article existe
             const checkResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/check_article_html?article_id=${articleId}`, {
@@ -143,6 +144,18 @@ async function checkAndGenerateArticles() {
                     'Content-Type': 'application/json',
                 }
             });
+    
+            // Parse la réponse JSON
+            if (!checkResponse.ok) {
+                throw new Error(`Erreur HTTP: ${checkResponse.status}`);
+            }
+    
+            checkData = await checkResponse.json(); // Parse le JSON de la réponse
+            console.log(`Article ${articleId} existe: `, checkData.exists); // Vérifie si l'article existe ou non
+        } catch (error) {
+            console.error('Erreur lors de la vérification de l\'article:', error.message);
+        }
+        
     
             // Parse la réponse JSON
             if (!checkResponse.ok) {
@@ -176,11 +189,10 @@ async function checkAndGenerateArticles() {
         } else {
             console.log(`Le fichier HTML existe déjà pour l'article: ${article.title}`);
         }
-    }
 }
-
+    
 // Appelle la fonction loadProjects pour charger les projets au chargement de la page
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", function() {
     loadProjects(); 
     loadArticles();
     checkAndGenerateArticles();
