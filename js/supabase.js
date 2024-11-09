@@ -4,8 +4,7 @@ async function loadProjects() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            mode: 'no-cors'
+            }
         });
         const projects = await response.json();
 
@@ -63,8 +62,7 @@ async function loadArticles() {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            mode: 'no-cors'
+            }
         });
 
         if (!response.ok) {
@@ -126,8 +124,7 @@ async function checkAndGenerateArticles() {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-        },
-        mode: 'no-cors'
+        }
     });
     const articles = await articlesResponse.json();
     
@@ -144,8 +141,7 @@ async function checkAndGenerateArticles() {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                },
-                mode: 'cors' // Utilise "cors" pour autoriser le traitement de la réponse
+                }
             });
     
             // Parse la réponse JSON
@@ -169,8 +165,7 @@ async function checkAndGenerateArticles() {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                },
-                mode: 'no-cors'
+                }
             });
             
             if (!generateResponse.ok) {
