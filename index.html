@@ -182,7 +182,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row portfolio-container" id="projectsContainer">
+                <div class="row portfolio" id="projectsContainer">
                      <!-- Les projets seront insérés ici par JavaScript -->
                 </div>
             </div>
@@ -193,23 +193,27 @@
         <!-- Blog Start -->
         <div class="blog" id="blog">
             <div class="container">
-                <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                <div class="section-header text-center zoomIn">
                     <p>Blog</p>
                     <h2>Derniers Articles</h2>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <ul id="blog-filter">
-                            <li data-filter="*" class="filter-active">All</li>
-                            <li data-filter=".filter-data">Data</li>
-                            <li data-filter=".filter-bi">Business Intelligence</li>
-                            <li data-filter=".filter-career">Carrière</li>
-                        </ul>
-                    </div>
                 </div>
-                <div class="row blog" id="blogjorisContainer">
-                    <!-- Les projets seront insérés ici par JavaScript -->
-               </div>
+                <div class="col-12">
+                    <ul id="blog-filter">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-data">Data</li>
+                        <li data-filter=".filter-bi">Business Intelligence</li>
+                        <li data-filter=".filter-career">Carrière</li>
+                    </ul>
+                </div>
+                <div class="carousel-container">
+                    <button class="carousel-arrow left-arrow">&#9664;</button> <!-- Flèche gauche -->
+                    <div class="row blog carousel-track" id="blogjorisContainer">
+                        <!-- Les projets seront insérés ici par JavaScript -->
+                    </div>
+                    <button class="carousel-arrow right-arrow">&#9654;</button> <!-- Flèche droite -->
+                </div>
             </div>
         </div>
         <!-- Blog End -->
@@ -504,6 +508,7 @@
         <script src="mail/contact.js"></script>
         <script src="js/chatbot.js"></script>
         <script src="js/supabase.js"></script>
+        <script src="js/style.js"></script>
 
         <!-- Template Javascript -->
         <script src="js/main.js"></script>

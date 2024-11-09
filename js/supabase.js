@@ -20,8 +20,8 @@ async function loadProjects() {
 
             // Crée le conteneur HTML pour chaque projet
             const projectDiv = document.createElement("div");
-            projectDiv.classList.add("col-lg-4", "col-md-6", "col-sm-12", "portfolio-item", `${project.category}`, "wow", "fadeInUp");
-            projectDiv.setAttribute("data-wow-delay", `${delay}s`);
+            projectDiv.classList.add("col-lg-4", "col-md-6", "col-sm-12", "portfolio-item", `${project.category}`, "fadeInUp");
+            // projectDiv.setAttribute("data-wow-delay", `${delay}s`);
 
             projectDiv.innerHTML = `
                 <div class="portfolio-wrap">
@@ -51,6 +51,10 @@ async function loadProjects() {
 
             portfolioIsotope.isotope({ filter: $(this).data('filter') });
         });
+
+        // Ajuster la hauteur du conteneur après l'ajout des articles
+        adjustContainerHeight('projectsContainer', 'portfolio-item');
+
     } catch (error) {
         console.error("Erreur lors de la récupération des projets:", error);
     }
@@ -80,8 +84,8 @@ async function loadArticles() {
         articles.forEach((article) => {
             const articleDiv = document.createElement("div");
 
-            articleDiv.classList.add("col-lg-6", "blog-item", `${article.category}`, "wow", "fadeInUp");
-            articleDiv.setAttribute("data-wow-delay", "0.1s");
+            articleDiv.classList.add("blog-item", `${article.category}`, "fadeInUp");
+            // articleDiv.setAttribute("data-wow-delay", "0.1s");
 
             articleDiv.innerHTML = `
                 <div class="blog-img">
@@ -112,7 +116,10 @@ async function loadArticles() {
             // Filtrer les éléments
             blogIsotope.isotope({ filter: $(this).data('filter') });
         });
-    
+        initializeCarousel();
+        // Ajuster la hauteur du conteneur après l'ajout des articles
+        adjustContainerHeight('blogjorisContainer', 'blog-item');
+
     } catch (error) {
         console.error("Erreur lors de la récupération des articles:", error);
     }
@@ -176,12 +183,36 @@ async function checkAndGenerateArticles() {
         } else {
             console.log(`Le fichier HTML existe déjà pour l'article: ${article.title}`);
         }
+
+        // Génère le sitemap
+        await fetch(`https://porte-folio-kappa.vercel.app/api/generate_sitemap`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
     }
 }
+
+// Fonction pour ajuster la hauteur du conteneur en fonction des articles
+function adjustContainerHeight(element, className) {
+    const container = document.getElementById(element);
+    const Items = container.getElementsByClassName(className);
     
+    let totalHeight = 0;
+    for (let i = 0; i < Items.length; i++) {
+        totalHeight += Items[i].offsetHeight; // Ajoute la hauteur de chaque élément
+    }
+    
+    // Appliquer la hauteur calculée si elle dépasse la hauteur automatique
+
+    container.style.height = 'auto'; // Laisser le conteneur ajuster sa hauteur automatiquement
+
+}
+
 // Appelle la fonction loadProjects pour charger les projets au chargement de la page
 document.addEventListener("DOMContentLoaded", function() {
     loadProjects(); 
     loadArticles();
-    checkAndGenerateArticles();
+    // adjustContainerHeight('blogjorisContainer', 'blog-item');
 });

@@ -1187,9 +1187,10 @@ a:focus {
 /*******************************/
 .portfolio {
     position: relative;
-    padding: 45px 0 15px 0;
+    padding: 0px 0 0px 0;
     min-height:270px;
-    height: 100%;
+    height: auto;
+    margin: auto;
 }
 
 .portfolio-container {
@@ -1307,6 +1308,8 @@ a:focus {
 @media (max-width: 768px) {
     .portfolio .portfolio-item {
         width: 100%; /* Une seule colonne pour les petits écrans */
+        position: initial !important;
+        height: auto !important;
     }
 
     .portfolio .portfolio-text h3 {
@@ -1331,26 +1334,36 @@ a:focus {
 
 .blog {
     position: relative;
-    width: 100%;
-    padding: 45px 0 40px 0;
-    height:100%;
+    width: 95%;
+    padding: 0px 0 10px 0;
+    height:auto;
     min-height:270px;
+    margin: 30px;
+    justify-content: center;
 }
 
 .blog .blog-item {
-    position: relative;
-    margin-bottom: 30px;
+    position: initial !important;
+    margin: 30px 50px 10px 10px;
+    width: 40%; /* Chaque article prend 40% de la largeur du carrousel */
+    flex: 0 0 auto; /* Cela évite de forcer les articles à se redimensionner */
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
 }
 
 .blog .blog-img {
     position: relative;
     width: 100%;
+    height: auto;
     overflow: hidden;
 }
 
 .blog .blog-img img {
-    width: 70%;
+    width: 100%;
     transition: .5s;
+    position: relative;
 }
 
 .blog .blog-item:hover img {
@@ -1363,6 +1376,8 @@ a:focus {
     border-right: 1px solid rgba(0, 0, 0, .07);
     border-bottom: 1px solid rgba(0, 0, 0, .07);
     border-left: 1px solid rgba(0, 0, 0, .07);
+    height: 40%;
+    width: 100%;
 }
 
 .blog .blog-text h2 {
@@ -1372,15 +1387,6 @@ a:focus {
 
 .blog .blog-text p {
     margin-bottom: 10px;
-}
-
-.blog .blog-item a.btn {
-    margin-top: 10px;
-    padding: 8px 15px;
-}
-
-.blog .blog-item a.btn i {
-    margin-left: 5px;
 }
 
 .blog .blog-meta {
@@ -1429,6 +1435,7 @@ a:focus {
     -moz-transition: ease-out 0.3s;
 }
 
+
 .blog #blog-filter li:hover {
     background-color: #e2e2e2; /* Changement de couleur au survol */
 }
@@ -1468,24 +1475,23 @@ figure img {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 992px) {
-    .blog .blog-item {
-        width: 48%; /* Deux colonnes pour les tablettes */
-    }
-
-    .blog .blog-text h2 {
-        font-size: 22px; /* Ajuster la taille du titre pour les tablettes */
-    }
-
-    .blog .blog-meta p {
-        font-size: 12px; /* Ajuster la taille de la police pour les méta-données */
-    }
-
-}
 
 @media (max-width: 768px) {
     .blog .blog-item {
         width: 100%; /* Une seule colonne pour les petits écrans */
+        position: initial !important;
+        height: auto !important;
+        max-width: 90%;
+        margin: auto;
+    }
+
+    .blog .blog-img {
+        height: 20%;
+    }
+
+    .blog .blog-text {
+        height: auto;
+        text-align: center;
     }
 
     .blog .blog-text h2 {
@@ -1498,12 +1504,45 @@ figure img {
     }
 
     .blog #blog-filter li {
-        padding: 4px 10px; /* Réduire le rembourrage pour les filtres sur mobile */
+        padding: 4px 10px;
         font-size: 12px; /* Réduire la taille des filtres sur mobile */
     }
-    
+
 }
 
+.carousel-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Cache le débordement pour le défilement horizontal */
+    display: flex;
+    align-items: center;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease; /* Animation de transition pour le défilement */
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
 
 /**********************************/
 /********** Related articles CSS **********/
