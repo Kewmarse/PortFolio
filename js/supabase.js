@@ -176,6 +176,7 @@ async function checkAndGenerateArticles() {
         } else {
             console.log(`Le fichier HTML existe déjà pour l'article: ${article.title}`);
         }
+    }
 }
     
 // Appelle la fonction loadProjects pour charger les projets au chargement de la page
