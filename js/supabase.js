@@ -165,7 +165,7 @@ async function checkAndGenerateArticles() {
             console.log(`Le fichier HTML n'existe pas pour l'article: ${article.title}, génération en cours...`);
             
             // Génère le fichier HTML de l'article
-            const generateResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/generate_html/${articleId}`,{
+            const generateResponse = await fetch(`https://porte-folio-kappa.vercel.app/api/generate_html?article_id=${articleId}`,{
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
