@@ -156,19 +156,6 @@ async function checkAndGenerateArticles() {
             console.error('Erreur lors de la vérification de l\'article:', error.message);
         }
         
-    
-            // Parse la réponse JSON
-            if (!checkResponse.ok) {
-                throw new Error(`Erreur HTTP: ${checkResponse.status}`);
-            }
-    
-            const checkData = await checkResponse.json(); // Parse le JSON de la réponse
-    
-            console.log(`Article ${articleId} existe: `, checkData.exists); // Vérifie si l'article existe ou non
-        } catch (error) {
-            console.error('Erreur lors de la vérification de l\'article:', error.message);
-        }
-        
         // Vérifie si "exists" est false
         if (!checkData.exists) {
             console.log(`Le fichier HTML n'existe pas pour l'article: ${article.title}, génération en cours...`);
