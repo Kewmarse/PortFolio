@@ -1593,8 +1593,8 @@ a{
 
 .article {
     max-width: 800px; /* Largeur maximale pour les articles */
-    margin: 50px auto; /* Centrage de l'article */
-    padding: 20px; /* Espacement interne */
+    margin:0 auto; /* Centrage de l'article */
+    /* padding: 20px; Espacement interne */
 }
 
 .article-title {
@@ -1824,11 +1824,11 @@ a{
 /********* ChatBot CSS *********/
 /*******************************/
 /* Responsivité pour la fenêtre de chat */
-@media (max-width: 576px) {
+@media (max-width: 700px) {
     .chat-popup {
-        width: auto; /* Utiliser 90% de la largeur de l'écran */
+        width: 90%; /* Utiliser 90% de la largeur de l'écran */
         height: auto; /* Ajuster la hauteur automatiquement selon le contenu */
-        max-height: auto; /* Limiter la hauteur à 80% de l'écran */
+        max-height: 90%; /* Limiter la hauteur à 80% de l'écran */
         bottom: 20px; /* Ajustement de la position pour les petits écrans */
         /* right: 2%; Moins d'espace à droite sur mobile */
         margin: auto;
@@ -1902,7 +1902,7 @@ a{
     z-index: 1000;
     background-color: white;
     width: auto;
-    max-width: 30%;
+    max-width: 400px;
     height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
