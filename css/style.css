@@ -1596,7 +1596,9 @@ a{
 .article {
     max-width: 800px; /* Largeur maximale pour les articles */
     margin:0 auto; /* Centrage de l'article */
-    /* padding: 20px; Espacement interne */
+    padding: 20px; /*Espacement interne*/
+    position: relative !important;
+    top:20px;
 }
 
 .article-title {
