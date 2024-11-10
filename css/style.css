@@ -1240,7 +1240,9 @@ a:focus {
 }
 
 .portfolio .portfolio-item {
-    position: relative;
+    position: relative !important;
+    left:0px !important;
+    top:0px !important;
 }
 
 .portfolio .portfolio-wrap {
@@ -1830,7 +1832,7 @@ a{
         height: auto; /* Ajuster la hauteur automatiquement selon le contenu */
         max-height: 90%; /* Limiter la hauteur à 80% de l'écran */
         bottom: 20px; /* Ajustement de la position pour les petits écrans */
-        /* right: 2%; Moins d'espace à droite sur mobile */
+        right: 2%; Moins d'espace à droite sur mobile
         margin: auto;
         border-radius: 10px; /* Conserver la bordure arrondie */
     }
@@ -1841,7 +1843,7 @@ a{
     }
 
     .chat-popup-body {
-        font-size: 14px; /* Ajuster la taille de la police du texte */
+        font-size: auto; /* Ajuster la taille de la police du texte */
         padding: 15px; /* Espacement interne pour une meilleure lisibilité */
         overflow-y: auto; /* Activer le défilement si le contenu dépasse */
     }

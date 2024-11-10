@@ -203,16 +203,20 @@ function adjustContainerHeight(element, className) {
     for (let i = 0; i < Items.length; i++) {
         totalHeight += Items[i].offsetHeight; // Ajoute la hauteur de chaque élément
     }
-    
+    container.style.height = 'auto';
     // Appliquer la hauteur calculée si elle dépasse la hauteur automatique
-
-    container.style.height = 'auto'; // Laisser le conteneur ajuster sa hauteur automatiquement
-
+    if (totalHeight>container.style.height) {
+        container.style.height = totalHeight; // Laisser le conteneur ajuster sa hauteur automatiquement
+    }
 }
 
 // Appelle la fonction loadProjects pour charger les projets au chargement de la page
 document.addEventListener("DOMContentLoaded", function() {
     loadProjects(); 
     loadArticles();
-    // adjustContainerHeight('blogjorisContainer', 'blog-item');
+    // setTimeout(function() {
+    //     // adjustContainerHeight('blogjorisContainer', 'blog-item');
+    //     adjustContainerHeight('projectsContainer', 'portfolio-item');
+    // }, 2000);  // Délai de 2 secondes (2000 ms)
+
 });
