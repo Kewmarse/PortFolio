@@ -268,7 +268,7 @@ a:focus {
     margin-bottom: 45px;
     padding: 120px 0 0 0;
     overflow: hidden;
-    background: linear-gradient(rgba(239, 35, 60, .95), rgba(239, 35, 60, .95)), url(../img/contact.jpg);
+    background: linear-gradient(rgba(239, 35, 60, .95), rgba(239, 35, 60, .95));
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -282,6 +282,7 @@ a:focus {
     position: relative;
     text-align: right;
     padding-right: 75px;
+
 }
 
 .hero .hero-image img {
